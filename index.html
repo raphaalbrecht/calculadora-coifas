@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Calculadora de Vazão para Coifas</title>
+<meta name="description" content="Cálculo de vazão de exaustão para coifas conforme NBR 14518 e Decreto 22281 (GEM/RioLuz).">
+<meta name="theme-color" content="#0f2c4c">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEQklEQVR4nO3dPW4UQRSF0QGRk7EKxEogIydnQeTkZLASxCrIWAFElgyyzUx3/by6dU6Ou7rq83PPCM1cLgAAAAAAAAAAAMDTns1ewBEvX7/9PXsNu/j149tSjZRfrHjrqRx5yYWJeB3V4i61GCGvq0rYJRYh5Byzw556cSHnmhX28xkXvVzEnG7W+U4JWsx7mHHOQ/8sCHlfox5Bhk1oMe9t1PkPCVrMXC5jOuj+ZyAx5lef3g+5zs+PX4ZcZ7Sejx9dJ3RizJzXs4tuQYuZp/TqY9r70NBDl6BNZ67Ro5PmQYuZW7TupWnQYuaIlt14hiZKs6BNZ85o1Y8JTZQmQZvOtNCiIxOaKKeDNp1p6WxPJjRRBE2UU0F73KCHM12Z0EQRNFEETRRBE+Vw0F4Q0tPRvkxoogiaKIImiqCJImiiCJoogiaKoInyYvYCRhr1IYuttFpv6oc+PmSbCb1azC3tdO/bBM0etgh6pwn1mF32ID7oXQ7yGjvsRXzQ7CU66B0m0q3S9yQ6aB6WHHVs0MmHxuMigxbz/6XuUWTQXCcx6rigEw+J60UFLebbpe1ZVNAckxR1TNBJh8JxEUGL+byUPYwImjYSol4+6IRDoJ3lg6at1QfE0kGvvvlVrbyvywa98qbTz7JB09eqA2PJoFfd7NWsuM/LBb3iJjPOckEz1moDZKmgV9vcFCvt+zJBr7SpzLNM0My1ykBZIuhVNjPdCudQPugVNpE6ygdNLdUHTOmgq2/eriqfS+mg4VZlg648Bah7PiWDrrpZ/K3iOZUMGo4qF3TF33oeV+28yn1p0E5fcEN75SY0nCFoomwV9JsPX7e79sx7nmGboO8OdsYBz7r2zHueZZug2cMWQf87oUZOrFnXnnnPM20R9Cy7RFRJfNCPRZX8ArHiPY8SHfT/DrDnAc+69sx7riA66FnSo6ksNuhro2od3y0/b9a1k3/hYoNmT5FB3zqBWk2sIz9n1rVTp/Szo//w5eu3v1supLf7B/j987strj3znlv49ePbzX1GTmj2JWiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIcDvrIR53CtY72ZUITRdBEETRRBE2UU0F7YUgPZ7oyoYkiaKKcDtpjBy2d7alJjKt9ZyF1nQ26ySOHKU0LLTryDE2UZkGb0pzRqh8TmihNgzalOaJlN80ntKi5ReteujxyiJpr9OjEMzRRugVtSvOUXn10ndCi5iE9u+j+yCFq7uvdw5BnaFFzuYzpYNiLQlHvbdT5T4nM/87bx+hBNuVtO9N6DzPOedr70KLONut8S0TlESTH7EFVIug7wl7X7JDvlFjEv4S9jioh3ym1mIeIu55qEd9XdmFPEfk4leMFAAAAAAAAAAAY5g9/ASkqmR8khwAAAABJRU5ErkJggg==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vazão Coifas">
+<style>
+  :root{
+    --bg:#0b1b2e; --panel:#12263f; --panel2:#193353;
+    --line:#26436b; --txt:#eaf1fb; --muted:#9db4d0; --accent:#3d8bff;
+    --accent2:#25c2a0; --warn:#ffb020; --bad:#ff5a6a; --chip:#1d3a5c;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,#0b1b2e,#0a1626 60%);
+    color:var(--txt); line-height:1.45;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    -webkit-text-size-adjust:100%;
+  }
+  header{
+    padding:20px 18px 14px; text-align:center;
+    border-bottom:1px solid var(--line);
+    background:rgba(15,44,76,.4);
+  }
+  header h1{font-size:19px;margin:0 0 3px;font-weight:700;letter-spacing:.2px}
+  header p{margin:0;font-size:12.5px;color:var(--muted)}
+  .wrap{max-width:640px;margin:0 auto;padding:16px 14px 40px}
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:16px; margin-bottom:14px;
+  }
+  .card h2{font-size:14px;margin:0 0 12px;color:var(--accent2);
+    text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+  label{display:block;font-size:12.5px;color:var(--muted);margin:10px 0 5px}
+  select,input{
+    width:100%; padding:11px 12px; font-size:15px;
+    background:var(--panel2); color:var(--txt);
+    border:1px solid var(--line); border-radius:10px; outline:none;
+    -webkit-appearance:none; appearance:none;
+  }
+  select:focus,input:focus{border-color:var(--accent)}
+  select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239db4d0' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center;padding-right:34px}
+  .row{display:flex;gap:10px}
+  .row>div{flex:1}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
+  .seg button{
+    flex:1;min-width:70px;padding:9px 6px;font-size:12.5px;border-radius:9px;
+    background:var(--panel2);color:var(--muted);border:1px solid var(--line);cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+  .result{
+    background:linear-gradient(135deg,#12263f,#173251);
+    border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+  .result .name{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+  .result .val{font-size:26px;font-weight:800;letter-spacing:.3px}
+  .result .val small{font-size:14px;font-weight:600;color:var(--muted)}
+  .result .formula{font-size:11.5px;color:var(--muted);margin-top:6px;font-family:ui-monospace,Menlo,monospace}
+  .result.hero{background:linear-gradient(135deg,#0f4a3a,#1b6b52);border-color:#25c2a0}
+  .result.hero .name{color:#bff3e4}
+  .result.na{opacity:.55}
+  .result.na .val{font-size:16px;font-weight:600;color:var(--muted)}
+  .badge{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:20px;
+    background:var(--chip);color:var(--muted);margin-left:6px;vertical-align:middle}
+  .ok{color:var(--accent2)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .kv{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px}
+  .kv .k{font-size:11px;color:var(--muted)}
+  .kv .v{font-size:17px;font-weight:700;margin-top:2px}
+  .note{font-size:11.5px;color:var(--muted);background:rgba(61,139,255,.08);
+    border:1px solid rgba(61,139,255,.25);border-radius:9px;padding:10px 11px;margin-top:10px}
+  .alert{display:flex;gap:10px;align-items:flex-start;margin-top:10px;
+    border-radius:11px;padding:12px 13px;font-size:12.7px;font-weight:600;line-height:1.4;
+    border:1px solid;border-left-width:5px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+  .alert .ico{font-size:18px;line-height:1.15;flex:0 0 auto}
+  .alert b{font-weight:800}
+  .alert-ok{background:rgba(37,194,160,.16);border-color:var(--accent2);color:#c6f5e8}
+  .alert-warn{background:rgba(255,176,32,.16);border-color:var(--warn);color:#ffe4ad;
+    animation:pulseW 1.8s ease-in-out infinite}
+  .alert-bad{background:rgba(255,90,106,.17);border-color:var(--bad);color:#ffcace;
+    animation:pulseB 1.8s ease-in-out infinite}
+  @keyframes pulseW{0%,100%{box-shadow:0 0 0 0 rgba(255,176,32,.45)}50%{box-shadow:0 0 0 6px rgba(255,176,32,0)}}
+  @keyframes pulseB{0%,100%{box-shadow:0 0 0 0 rgba(255,90,106,.45)}50%{box-shadow:0 0 0 6px rgba(255,90,106,0)}}
+  @media (prefers-reduced-motion:reduce){.alert-warn,.alert-bad{animation:none}}
+  details{margin-top:8px}
+  summary{font-size:12.5px;color:var(--accent);cursor:pointer;padding:4px 0}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
+  th,td{border:1px solid var(--line);padding:5px 6px;text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-weight:600}
+  .foot{text-align:center;font-size:11px;color:var(--muted);margin-top:18px;line-height:1.6}
+  #installBtn{display:none;margin:12px auto 0;padding:10px 18px;font-size:13px;
+    background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer}
+  .disclaimer{font-size:11px;color:var(--muted);border-top:1px solid var(--line);
+    padding-top:12px;margin-top:16px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Calculadora de Vazão para Coifas</h1>
+  <p>NBR 14518 &nbsp;·&nbsp; Decreto 22281 — GEM/RioLuz</p>
+  <button id="installBtn">📲 Instalar app</button>
+</header>
+
+<div class="wrap">
+
+  <div class="card">
+    <h2>1 · Configuração da coifa</h2>
+
+    <label for="tipo">Tipo de coifa</label>
+    <select id="tipo">
+      <option value="ilha">Central / Ilha</option>
+      <option value="parede">Encostada em parede (1–2 lados)</option>
+      <option value="capela">Capela / low-side (3 lados fechados)</option>
+      <option value="frontal">Prateleira / aspiração frontal</option>
+      <option value="churrasqueira">Churrasqueira elétrica ou a gás</option>
+      <option value="braseiro">Braseiro / forno a lenha (comb. sólido)</option>
+      <option value="forno">Forno a gás ou elétrico</option>
+    </select>
+
+    <div id="ladosBox" style="display:none">
+      <label>Lados fechados (encostados)</label>
+      <div class="seg" id="ladosSeg">
+        <button data-lados="1" class="on">1 lado</button>
+        <button data-lados="2">2 lados</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="C">Comprimento C (m)</label>
+        <input id="C" type="number" inputmode="decimal" step="0.05" value="2.00">
+      </div>
+      <div id="largBox">
+        <label for="Larg">Largura da coifa (m)</label>
+        <input id="Larg" type="number" inputmode="decimal" step="0.05" value="1.10">
+      </div>
+    </div>
+
+    <label for="H" id="Hlabel">Altura da abertura H (m) <span class="hint" style="display:inline">— borda inferior da coifa até a superfície de cocção</span></label>
+    <input id="H" type="number" inputmode="decimal" step="0.05" value="0.60">
+    <div class="hint">NBR/Decreto: distância da cocção à coifa ≤ 1,20 m.</div>
+
+    <label>Classe do efluente (para NBR Método II)</label>
+    <div class="seg" id="classeSeg">
+      <button data-classe="leve">Leve</button>
+      <button data-classe="moderado" class="on">Moderado</button>
+      <button data-classe="severo">Severo</button>
+      <button data-classe="solido">Sólido</button>
+    </div>
+
+    <label style="margin-top:12px">Coifa certificada?</label>
+    <div class="seg" id="certSeg">
+      <button data-cert="nao" class="on">Não certificada</button>
+      <button data-cert="sim">Certificada</button>
+    </div>
+
+    <label for="fs" style="margin-top:12px">Fator de segurança (%)</label>
+    <input id="fs" type="number" inputmode="decimal" step="1" min="0" value="15">
+    <div class="hint">Acréscimo aplicado sobre a vazão de projeto (maior valor entre os métodos).</div>
+  </div>
+
+  <div class="card">
+    <h2>2 · Resultados por método</h2>
+    <div id="results"></div>
+  </div>
+
+  <div class="card">
+    <h2>3 · Ar de reposição &amp; duto</h2>
+    <div class="grid2" style="margin-bottom:12px">
+      <div class="kv"><div class="k">Ar de reposição (~90%)</div><div class="v" id="repVal">—</div></div>
+      <div class="kv"><div class="k">Subpressão da cozinha</div><div class="v" style="font-size:13px">mantém pressão negativa</div></div>
+    </div>
+    <label>Norma aplicável (limita a velocidade do duto)</label>
+    <div class="seg" id="normaSeg">
+      <button data-norma="ambas" class="on">Ambas</button>
+      <button data-norma="gem">GEM / Decreto</button>
+      <button data-norma="nbr">ABNT NBR</button>
+    </div>
+    <label for="vDuto" style="margin-top:12px">Velocidade adotada no duto (m/s)</label>
+    <input id="vDuto" type="number" inputmode="decimal" step="0.5" value="8" min="7.5" max="12.5">
+    <div class="hint" id="vDutoHint">Faixa válida (ambas as normas): 7,5 – 12,5 m/s. Valores fora da faixa são ajustados automaticamente.</div>
+    <div class="grid2" style="margin-top:10px">
+      <div class="kv"><div class="k">Área do duto</div><div class="v" id="dutoArea">—</div></div>
+      <div class="kv"><div class="k">Ø equivalente</div><div class="v" id="dutoDiam">—</div></div>
+    </div>
+    <div id="dutoWarn" class="note" style="display:none"></div>
+  </div>
+
+  <div class="card">
+    <h2>4 · Checagem 60 renovações/h</h2>
+    <div class="row">
+      <div>
+        <label for="areaCoz">Área da cozinha (m²)</label>
+        <input id="areaCoz" type="number" inputmode="decimal" step="1" value="40">
+      </div>
+      <div>
+        <label for="peDir">Pé-direito (m)</label>
+        <input id="peDir" type="number" inputmode="decimal" step="0.1" value="3.0">
+      </div>
+    </div>
+    <label style="margin-top:10px">Taxa de renovação</label>
+    <div class="seg" id="renSeg">
+      <button data-ren="60" class="on">60 ren/h (padrão)</button>
+      <button data-ren="20">20 ren/h (só calor/vapor)</button>
+    </div>
+    <div class="grid2" style="margin-top:12px">
+      <div class="kv"><div class="k">Volume da cozinha</div><div class="v" id="volVal">—</div></div>
+      <div class="kv"><div class="k">Vazão mínima exigida</div><div class="v" id="renVal">—</div></div>
+    </div>
+    <div id="renCheck" class="note" style="margin-top:10px">—</div>
+    <div class="hint" style="margin-top:8px">Compara a soma das vazões das coifas (aqui, a vazão de projeto desta coifa) com 60 ren/h do volume. Para várias coifas, some as vazões.</div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Aviso técnico:</strong> ferramenta de apoio ao dimensionamento. Os resultados devem ser
+    verificados por profissional habilitado contra o texto vigente da ABNT NBR 14518 e do
+    Decreto Municipal 22281/2002 (GEM/RioLuz). Coeficientes da NBR Método I para churrasqueiras
+    a combustível sólido não são aplicados aqui por divergência de extração; use o Método II
+    (tabelas) e o Decreto para esses casos.
+  </div>
+
+  <div class="foot">
+    ExausTech · Calculadora de Vazão para Coifas
+  </div>
+</div>
+
+<script>
+// ---------- Estado ----------
+const st = { tipo:'ilha', lados:1, classe:'moderado', cert:'nao', ren:60, norma:'ambas' };
+
+// Faixas de velocidade no duto por norma (m/s)
+const V_RANGE = {
+  ambas: {min:7.5,  max:12.5, label:'ambas as normas'},
+  gem:   {min:7.5,  max:14.0, label:'Decreto 22281 / GEM'},
+  nbr:   {min:2.54, max:12.5, label:'ABNT NBR 14518'}
+};
+
+// ---------- Tabelas NBR 14518 Método II (m³/h por metro linear) ----------
+// linha por estilo de coifa; colunas: leve, moderado, severo, solido
+const TAB2 = { // não certificada (Tabela 2)
+  parede:      {leve:1116, moderado:1674, severo:2232, solido:3068},
+  ilha_simples:{leve:2232, moderado:2790, severo:3348, solido:3902},
+  ilha_dupla:  {leve:1393, moderado:1674, severo:2232, solido:3068},
+  forno:       {leve:1393, moderado:1393, severo:null, solido:null},
+  prateleira:  {leve:1674, moderado:1674, severo:2232, solido:null}
+};
+const TAB3 = { // certificada (Tabela 3) - usamos o mínimo como exigência
+  parede:      {leve:835,  moderado:1116, severo:1116, solido:1951},
+  ilha_simples:{leve:1393, moderado:1674, severo:1674, solido:3068},
+  ilha_dupla:  {leve:835,  moderado:1116, severo:1393, solido:2790},
+  forno:       {leve:835,  moderado:835,  severo:null, solido:null},
+  prateleira:  {leve:558,  moderado:1116, severo:1674, solido:null}
+};
+
+// mapeia tipo de coifa -> linha da tabela NBR II
+function linhaTab(tipo){
+  if(tipo==='ilha') return 'ilha_simples';
+  if(tipo==='parede'||tipo==='capela') return 'parede';
+  if(tipo==='frontal') return 'prateleira';
+  if(tipo==='forno') return 'forno';
+  if(tipo==='churrasqueira'||tipo==='braseiro') return 'parede'; // conservador; ajuste se em ilha
+  return 'parede';
+}
+
+// ---------- Geometria ----------
+function perimetroAberto(tipo,C,Larg,lados){
+  // perímetro dos lados abertos (m)
+  if(tipo==='ilha') return 2*(C+Larg);
+  if(tipo==='parede') return lados===1 ? (C + 2*Larg) : (C + Larg);
+  if(tipo==='capela') return C;             // 3 lados fechados: só a frente
+  if(tipo==='frontal') return C;
+  return 2*(C+Larg);
+}
+
+// ---------- NBR 14518 Método I (velocidade de face) ----------
+function metodoI(tipo,C,Larg,H,lados){
+  const A1 = C*Larg;                        // área em planta / face horizontal
+  const P  = perimetroAberto(tipo,C,Larg,lados);
+  const A2 = P*H;                           // área pelo perímetro x altura
+  let q=null, det='';
+  if(tipo==='ilha'){
+    const q1=0.64*A1, q2=0.25*A2; q=Math.max(q1,q2)*3600;
+    det=`máx( 0,64·A1 ; 0,25·A2 )·3600 · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)} m²`;
+  } else if(tipo==='parede'){
+    const q1=0.40*A1, q2=0.25*A2; q=Math.max(q1,q2)*3600;
+    det=`máx( 0,40·A1 ; 0,25·A2 )·3600 · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)} m²`;
+  } else if(tipo==='forno'){
+    q=0.50*A1*3600; det=`0,50·(C·Larg)·3600 · A=${A1.toFixed(2)} m²`;
+  } else if(tipo==='frontal'){
+    q=0.34*H*C*3600; det=`0,34·H·C·3600`;
+  } else {
+    return {q:null, det:'Não aplicável neste método — usar Método II / Decreto'};
+  }
+  return {q, det};
+}
+
+// ---------- NBR 14518 Método II (tabelas) ----------
+function metodoII(tipo,C,classe,cert){
+  const linha=linhaTab(tipo);
+  const tab = cert==='sim'?TAB3:TAB2;
+  const val = tab[linha][classe];
+  if(val==null) return {q:null, det:`Combinação não permitida (${linha}/${classe})`};
+  const q=val*C;
+  return {q, det:`${val} m³/h·m × ${C.toFixed(2)} m (linha ${linha}, ${cert==='sim'?'certificada':'não cert.'})`};
+}
+
+// ---------- Decreto 22281 Art. 63 ----------
+function decreto(tipo,C,Larg,H,lados){
+  const A1=C*Larg;
+  const A2=perimetroAberto(tipo,C,Larg,lados)*H;
+  let q=null, det='';
+  if(tipo==='ilha'){
+    q=Math.max(2300*A1, 915*A2); det=`máx( 2300·A1 ; 915·A2 ) · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)}`;
+  } else if(tipo==='parede'){
+    q=Math.max(1460*A1, 915*A2); det=`máx( 1460·A1 ; 915·A2 ) · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)}`;
+  } else if(tipo==='capela'){
+    q=1150*C; det=`1150·C`;
+  } else if(tipo==='frontal'){
+    q=1150*C; det=`1150·C (tratado como capela/low-side)`;
+  } else if(tipo==='churrasqueira'){
+    q=1440*C*Larg; det=`1440·C·Larg`;
+  } else if(tipo==='braseiro'){
+    q=1836*C*H; det=`1836·C·H`;
+  } else if(tipo==='forno'){
+    q=1800*C*Larg; det=`1800·C·Larg`;
+  }
+  return {q, det};
+}
+
+// ---------- Render ----------
+function fmt(v){ return v==null?'—':Math.round(v).toLocaleString('pt-BR'); }
+function fmtV(v){ return v.toString().replace('.',','); }
+
+function aplicarFaixaNorma(){
+  const rng=V_RANGE[st.norma];
+  const inp=document.getElementById('vDuto');
+  inp.min=rng.min; inp.max=rng.max;
+  document.getElementById('vDutoHint').textContent=
+    `Faixa válida (${rng.label}): ${fmtV(rng.min)} – ${fmtV(rng.max)} m/s. Valores fora da faixa são ajustados automaticamente.`;
+  let v=parseFloat(inp.value);
+  if(!isFinite(v)||v<rng.min) inp.value=rng.min;
+  else if(v>rng.max) inp.value=rng.max;
+}
+
+function calc(){
+  const C=parseFloat(document.getElementById('C').value)||0;
+  const Larg=parseFloat(document.getElementById('Larg').value)||0;
+  const H=parseFloat(document.getElementById('H').value)||0;
+
+  const mI  = metodoI(st.tipo,C,Larg,H,st.lados);
+  const mII = metodoII(st.tipo,C,st.classe,st.cert);
+  const dec = decreto(st.tipo,C,Larg,H,st.lados);
+
+  const cands=[mI.q,mII.q,dec.q].filter(x=>x!=null&&isFinite(x));
+  const base = cands.length?Math.max(...cands):null;
+
+  // fator de segurança
+  const fs=parseFloat(document.getElementById('fs').value)||0;
+  const projeto = base!=null ? base*(1+fs/100) : null;
+
+  // resultados
+  const R=document.getElementById('results');
+  R.innerHTML='';
+  R.appendChild(card('NBR 14518 · Método I (velocidade de face)', mI.q, mI.det));
+  R.appendChild(card('NBR 14518 · Método II (tabelas)', mII.q, mII.det));
+  R.appendChild(card('Decreto 22281 · Art. 63 (GEM/RioLuz)', dec.q, dec.det));
+  const heroDet = base!=null
+    ? `máx( métodos ) = ${fmt(base)} m³/h  +  ${fmtV(fs)}% de fator de segurança`
+    : 'Maior valor entre os métodos aplicáveis';
+  R.appendChild(card('Vazão de projeto recomendada', projeto, heroDet, true));
+
+  // ar de reposição
+  document.getElementById('repVal').innerHTML = projeto? fmt(projeto*0.9)+' <small style="font-size:11px;color:#9db4d0">m³/h</small>' : '—';
+
+  // duto — velocidade limitada à faixa da norma selecionada
+  const rng=V_RANGE[st.norma];
+  const inp=document.getElementById('vDuto');
+  let vD=parseFloat(inp.value);
+  const dw=document.getElementById('dutoWarn');
+  let clamped=false;
+  if(!isFinite(vD)){ vD=rng.min; }
+  if(vD<rng.min){ vD=rng.min; clamped=true; }
+  if(vD>rng.max){ vD=rng.max; clamped=true; }
+  if(clamped && document.activeElement!==inp){ inp.value=vD; }
+  if(projeto&&vD>0){
+    const area=projeto/3600/vD;                 // m²
+    const diam=Math.sqrt(4*area/Math.PI)*1000;  // mm
+    document.getElementById('dutoArea').textContent=area.toFixed(3)+' m²';
+    document.getElementById('dutoDiam').textContent=Math.round(diam)+' mm';
+  }
+  if(clamped){
+    dw.style.display='flex';
+    dw.className='alert alert-warn';
+    dw.innerHTML=`<span class="ico">⚠️</span><span><b>Velocidade ajustada para ${fmtV(vD)} m/s</b> — limite da faixa de ${rng.label} (${fmtV(rng.min)}–${fmtV(rng.max)} m/s).</span>`;
+  } else { dw.style.display='none'; }
+
+  // 60 renovações
+  const A=parseFloat(document.getElementById('areaCoz').value)||0;
+  const pe=parseFloat(document.getElementById('peDir').value)||0;
+  const vol=A*pe;
+  const req=vol*st.ren;
+  document.getElementById('volVal').textContent=vol?fmt(vol)+' m³':'—';
+  document.getElementById('renVal').textContent=req?fmt(req)+' m³/h':'—';
+  const rc=document.getElementById('renCheck');
+  if(projeto&&req){
+    if(projeto>=req){
+      rc.className='alert alert-ok';
+      rc.innerHTML=`<span class="ico">✅</span><span><b>Atende às 60 renovações/h.</b> Vazão de projeto (${fmt(projeto)} m³/h) ≥ exigência (${fmt(req)} m³/h).</span>`;
+    } else {
+      rc.className='alert alert-bad';
+      rc.innerHTML=`<span class="ico">🚨</span><span><b>A renovação manda!</b> Exigência (${fmt(req)} m³/h) &gt; vazão desta coifa (${fmt(projeto)} m³/h). Adote ${fmt(req)} m³/h ou some as demais coifas.</span>`;
+    }
+  } else { rc.className='note'; rc.textContent='—'; }
+}
+
+function card(name,val,formula,hero){
+  const d=document.createElement('div');
+  d.className='result'+(hero?' hero':'')+(val==null?' na':'');
+  const valHtml = val==null
+    ? `<div class="val">Não aplicável</div>`
+    : `<div class="val">${fmt(val)} <small>m³/h</small></div>`;
+  d.innerHTML=`<div class="name">${name}</div>${valHtml}<div class="formula">${formula}</div>`;
+  return d;
+}
+
+// ---------- UI wiring ----------
+function segWire(id,key,cast){
+  document.querySelectorAll('#'+id+' button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      st[key]=cast?cast(b.dataset[key]):b.dataset[key];
+      calc();
+    });
+  });
+}
+segWire('ladosSeg','lados',v=>parseInt(v));
+segWire('classeSeg','classe');
+segWire('certSeg','cert');
+segWire('renSeg','ren',v=>parseInt(v));
+
+// seletor de norma: ajusta a faixa e recalcula
+document.querySelectorAll('#normaSeg button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#normaSeg button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    st.norma=b.dataset.norma;
+    aplicarFaixaNorma();
+    calc();
+  });
+});
+
+// ao sair do campo de velocidade, trava dentro da faixa
+document.getElementById('vDuto').addEventListener('blur',()=>{ aplicarFaixaNorma(); calc(); });
+
+const tipoSel=document.getElementById('tipo');
+tipoSel.addEventListener('change',()=>{
+  st.tipo=tipoSel.value;
+  // mostra/oculta campos conforme tipo
+  document.getElementById('ladosBox').style.display = (st.tipo==='parede')?'block':'none';
+  const needLarg = ['ilha','parede','capela','churrasqueira','forno'].includes(st.tipo);
+  document.getElementById('largBox').style.visibility = needLarg?'visible':'hidden';
+  calc();
+});
+
+['C','Larg','H','fs','vDuto','areaCoz','peDir'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',calc);
+});
+
+aplicarFaixaNorma();
+calc();
+
+// ---------- PWA install ----------
+let deferred;
+const btn=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;btn.style.display='block';});
+btn.addEventListener('click',async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;btn.style.display='none';});
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
