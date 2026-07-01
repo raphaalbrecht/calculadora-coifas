@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Calculadora de Vazão para Coifas</title>
+<title>Calculadora de Vazão para Coifas · EXAUSTECH</title>
 <meta name="description" content="Cálculo de vazão de exaustão para coifas conforme NBR 14518 e Decreto 22281 (GEM/RioLuz).">
 <meta name="theme-color" content="#0f2c4c">
 <link rel="manifest" href="manifest.json">
@@ -29,27 +29,18 @@
   }
   header{
     padding:20px 18px 14px; text-align:center;
-    border-bottom:1px solid var(--line);
-    background:rgba(15,44,76,.4);
+    border-bottom:1px solid var(--line); background:rgba(15,44,76,.4);
   }
-  header .brand{font-size:22px;font-weight:800;letter-spacing:3px;
-    color:var(--accent2);margin:0 0 6px}
-  header .brand span{color:var(--accent)}
-  header h1{font-size:19px;margin:0 0 3px;font-weight:700;letter-spacing:.2px}
+  header .brand{font-size:22px;font-weight:800;letter-spacing:3px;color:var(--accent2);margin:0 0 6px}
+  header h1{font-size:18px;margin:0 0 3px;font-weight:700;letter-spacing:.2px}
   header p{margin:0;font-size:12.5px;color:var(--muted)}
-  .wrap{max-width:640px;margin:0 auto;padding:16px 14px 40px}
-  .card{
-    background:var(--panel); border:1px solid var(--line);
-    border-radius:14px; padding:16px; margin-bottom:14px;
-  }
-  .card h2{font-size:14px;margin:0 0 12px;color:var(--accent2);
-    text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+  .wrap{max-width:660px;margin:0 auto;padding:16px 14px 60px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; margin-bottom:14px}
+  .card h2{font-size:14px;margin:0 0 12px;color:var(--accent2);text-transform:uppercase;letter-spacing:.6px;font-weight:700}
   label{display:block;font-size:12.5px;color:var(--muted);margin:10px 0 5px}
   select,input{
-    width:100%; padding:11px 12px; font-size:15px;
-    background:var(--panel2); color:var(--txt);
-    border:1px solid var(--line); border-radius:10px; outline:none;
-    -webkit-appearance:none; appearance:none;
+    width:100%; padding:11px 12px; font-size:15px; background:var(--panel2); color:var(--txt);
+    border:1px solid var(--line); border-radius:10px; outline:none; -webkit-appearance:none; appearance:none;
   }
   select:focus,input:focus{border-color:var(--accent)}
   select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239db4d0' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
@@ -58,54 +49,74 @@
   .row>div{flex:1}
   .hint{font-size:11.5px;color:var(--muted);margin-top:4px}
   .seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}
-  .seg button{
-    flex:1;min-width:70px;padding:9px 6px;font-size:12.5px;border-radius:9px;
+  .seg button{flex:1;min-width:64px;padding:9px 6px;font-size:12.5px;border-radius:9px;
     background:var(--panel2);color:var(--muted);border:1px solid var(--line);cursor:pointer}
   .seg button.on{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
-  .result{
-    background:linear-gradient(135deg,#12263f,#173251);
-    border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
-  .result .name{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-  .result .val{font-size:26px;font-weight:800;letter-spacing:.3px}
-  .result .val small{font-size:14px;font-weight:600;color:var(--muted)}
-  .result .formula{font-size:11.5px;color:var(--muted);margin-top:6px;font-family:ui-monospace,Menlo,monospace}
-  .result.hero{background:linear-gradient(135deg,#0f4a3a,#1b6b52);border-color:#25c2a0}
-  .result.hero .name{color:#bff3e4}
-  .result.na{opacity:.55}
-  .result.na .val{font-size:16px;font-weight:600;color:var(--muted)}
-  .badge{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:20px;
-    background:var(--chip);color:var(--muted);margin-left:6px;vertical-align:middle}
-  .ok{color:var(--accent2)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  .hood{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px;background:var(--panel2)}
+  .hood .htop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+  .hood .htop .htitle{font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:.5px}
+  .hood .rm{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;
+    padding:5px 10px;font-size:12px;cursor:pointer}
+  .hood .rm:hover{color:var(--bad);border-color:var(--bad)}
+  .hres{margin-top:12px;background:linear-gradient(135deg,#0f4a3a,#1b6b52);border:1px solid #25c2a0;
+    border-radius:10px;padding:11px 13px}
+  .hres .hlbl{font-size:11px;color:#bff3e4;text-transform:uppercase;letter-spacing:.5px}
+  .hres .hval{font-size:22px;font-weight:800}
+  .hres .hval small{font-size:12px;font-weight:600;color:#bff3e4}
+  details.methods{margin-top:9px}
+  details.methods summary{font-size:12px;color:var(--accent);cursor:pointer;padding:3px 0}
+  .mrow{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid rgba(38,67,107,.5)}
+  .mrow:last-child{border-bottom:none}
+  .mrow .mn{color:var(--muted)} .mrow .mv{font-weight:600}
+  .mrow .mv.na{color:var(--muted);font-weight:400;font-style:italic}
+  .addbtn{width:100%;padding:12px;font-size:14px;font-weight:600;color:var(--accent);
+    background:transparent;border:1.5px dashed var(--line);border-radius:11px;cursor:pointer}
+  .addbtn:hover{border-color:var(--accent)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .kv{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px}
-  .kv .k{font-size:11px;color:var(--muted)}
-  .kv .v{font-size:17px;font-weight:700;margin-top:2px}
-  .note{font-size:11.5px;color:var(--muted);background:rgba(61,139,255,.08);
-    border:1px solid rgba(61,139,255,.25);border-radius:9px;padding:10px 11px;margin-top:10px}
-  .alert{display:flex;gap:10px;align-items:flex-start;margin-top:10px;
-    border-radius:11px;padding:12px 13px;font-size:12.7px;font-weight:600;line-height:1.4;
-    border:1px solid;border-left-width:5px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+  .kv .k{font-size:11px;color:var(--muted)} .kv .v{font-size:17px;font-weight:700;margin-top:2px}
+  .total .kv{background:linear-gradient(135deg,#12263f,#173251)}
+  .totalhero{background:linear-gradient(135deg,#0f4a3a,#1b6b52);border:1px solid #25c2a0;
+    border-radius:12px;padding:14px;margin-bottom:12px}
+  .totalhero .hlbl{font-size:12px;color:#bff3e4;text-transform:uppercase;letter-spacing:.5px}
+  .totalhero .hval{font-size:28px;font-weight:800}
+  .totalhero .hval small{font-size:14px;color:#bff3e4;font-weight:600}
+  .alert{display:flex;gap:10px;align-items:flex-start;margin-top:10px;border-radius:11px;padding:12px 13px;
+    font-size:12.7px;font-weight:600;line-height:1.4;border:1px solid;border-left-width:5px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
   .alert .ico{font-size:18px;line-height:1.15;flex:0 0 auto}
   .alert b{font-weight:800}
   .alert-ok{background:rgba(37,194,160,.16);border-color:var(--accent2);color:#c6f5e8}
-  .alert-warn{background:rgba(255,176,32,.16);border-color:var(--warn);color:#ffe4ad;
-    animation:pulseW 1.8s ease-in-out infinite}
-  .alert-bad{background:rgba(255,90,106,.17);border-color:var(--bad);color:#ffcace;
-    animation:pulseB 1.8s ease-in-out infinite}
+  .alert-warn{background:rgba(255,176,32,.16);border-color:var(--warn);color:#ffe4ad;animation:pulseW 1.8s ease-in-out infinite}
+  .alert-bad{background:rgba(255,90,106,.17);border-color:var(--bad);color:#ffcace;animation:pulseB 1.8s ease-in-out infinite}
   @keyframes pulseW{0%,100%{box-shadow:0 0 0 0 rgba(255,176,32,.45)}50%{box-shadow:0 0 0 6px rgba(255,176,32,0)}}
   @keyframes pulseB{0%,100%{box-shadow:0 0 0 0 rgba(255,90,106,.45)}50%{box-shadow:0 0 0 6px rgba(255,90,106,0)}}
   @media (prefers-reduced-motion:reduce){.alert-warn,.alert-bad{animation:none}}
-  details{margin-top:8px}
-  summary{font-size:12.5px;color:var(--accent);cursor:pointer;padding:4px 0}
-  table{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
-  th,td{border:1px solid var(--line);padding:5px 6px;text-align:right}
-  th:first-child,td:first-child{text-align:left}
-  th{color:var(--muted);font-weight:600}
-  .foot{text-align:center;font-size:11px;color:var(--muted);margin-top:18px;line-height:1.6}
-  #installBtn{display:none;margin:12px auto 0;padding:10px 18px;font-size:13px;
-    background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer}
-  .disclaimer{font-size:11px;color:var(--muted);border-top:1px solid var(--line);
-    padding-top:12px;margin-top:16px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .actions button{flex:1;min-width:100px;padding:12px;font-size:13.5px;font-weight:700;border-radius:11px;cursor:pointer;border:1px solid var(--line)}
+  .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn-ghost{background:var(--panel2);color:var(--txt)}
+  .note{font-size:11.5px;color:var(--muted);background:rgba(61,139,255,.08);border:1px solid rgba(61,139,255,.25);border-radius:9px;padding:10px 11px;margin-top:10px}
+  .disclaimer{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:16px}
+  .foot{text-align:center;font-size:11px;color:var(--muted);margin-top:18px}
+  #installBtn{display:none;margin:12px auto 0;padding:9px 18px;font-size:13px;background:var(--accent);color:#fff;border:none;border-radius:10px;cursor:pointer}
+  #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:#173251;border:1px solid var(--accent2);color:#eaf1fb;padding:11px 18px;border-radius:12px;
+    font-size:13px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:all .25s;pointer-events:none;z-index:99}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  /* Memorial de impressão */
+  #memorial{display:none}
+  @media print{
+    body{background:#fff}
+    body>*:not(#memorial){display:none!important}
+    #memorial{display:block!important;color:#000;font-size:12px;padding:0 6mm}
+    #memorial h1{font-size:18px;margin:0 0 2px} #memorial h2{font-size:14px;margin:16px 0 6px;border-bottom:1px solid #ccc;padding-bottom:3px}
+    #memorial .mbrand{font-size:20px;font-weight:800;letter-spacing:2px;color:#1b6b52}
+    #memorial table{width:100%;border-collapse:collapse;margin-top:6px}
+    #memorial th,#memorial td{border:1px solid #bbb;padding:5px 7px;text-align:right;font-size:11px}
+    #memorial th:first-child,#memorial td:first-child{text-align:left}
+    #memorial .muted{color:#555;font-size:10px}
+    #memorial .tot{font-weight:800}
+  }
 </style>
 </head>
 <body>
@@ -118,381 +129,436 @@
 
 <div class="wrap">
 
+  <!-- PROJETO -->
   <div class="card">
-    <h2>1 · Configuração da coifa</h2>
-
-    <label for="tipo">Tipo de coifa</label>
-    <select id="tipo">
-      <option value="ilha">Central / Ilha</option>
-      <option value="parede">Encostada em parede (1–2 lados)</option>
-      <option value="capela">Capela / low-side (3 lados fechados)</option>
-      <option value="frontal">Prateleira / aspiração frontal</option>
-      <option value="churrasqueira">Churrasqueira elétrica ou a gás</option>
-      <option value="braseiro">Braseiro / forno a lenha (comb. sólido)</option>
-      <option value="forno">Forno a gás ou elétrico</option>
-    </select>
-
-    <div id="ladosBox" style="display:none">
-      <label>Lados fechados (encostados)</label>
-      <div class="seg" id="ladosSeg">
-        <button data-lados="1" class="on">1 lado</button>
-        <button data-lados="2">2 lados</button>
-      </div>
-    </div>
-
+    <h2>Projeto</h2>
     <div class="row">
-      <div>
-        <label for="C">Comprimento C (m)</label>
-        <input id="C" type="number" inputmode="decimal" step="0.05" value="2.00">
-      </div>
-      <div id="largBox">
-        <label for="Larg">Largura da coifa (m)</label>
-        <input id="Larg" type="number" inputmode="decimal" step="0.05" value="1.10">
-      </div>
+      <div><label for="pNome">Obra / cliente</label><input id="pNome" type="text" placeholder="Ex.: Restaurante X"></div>
     </div>
-
-    <label for="H" id="Hlabel">Altura da abertura H (m) <span class="hint" style="display:inline">— borda inferior da coifa até a superfície de cocção</span></label>
-    <input id="H" type="number" inputmode="decimal" step="0.05" value="0.60">
-    <div class="hint">NBR/Decreto: distância da cocção à coifa ≤ 1,20 m.</div>
-
-    <label>Classe do efluente (para NBR Método II)</label>
-    <div class="seg" id="classeSeg">
-      <button data-classe="leve">Leve</button>
-      <button data-classe="moderado" class="on">Moderado</button>
-      <button data-classe="severo">Severo</button>
-      <button data-classe="solido">Sólido</button>
+    <div class="row">
+      <div><label for="areaCoz">Área da cozinha (m²)</label><input id="areaCoz" type="number" inputmode="decimal" step="1" value="40"></div>
+      <div><label for="peDir">Pé-direito (m)</label><input id="peDir" type="number" inputmode="decimal" step="0.1" value="3.0"></div>
     </div>
-
-    <label style="margin-top:12px">Coifa certificada?</label>
-    <div class="seg" id="certSeg">
-      <button data-cert="nao" class="on">Não certificada</button>
-      <button data-cert="sim">Certificada</button>
+    <label>Taxa de renovação</label>
+    <div class="seg" id="renSeg">
+      <button data-ren="60" class="on">60 ren/h</button>
+      <button data-ren="20">20 ren/h</button>
     </div>
-
-    <label for="fs" style="margin-top:12px">Fator de segurança (%)</label>
+    <label style="margin-top:12px">Fator de segurança (%)</label>
     <input id="fs" type="number" inputmode="decimal" step="1" min="0" value="15">
-    <div class="hint">Acréscimo aplicado sobre a vazão de projeto (maior valor entre os métodos).</div>
-  </div>
+    <div class="hint">Aplicado sobre a vazão de projeto de cada coifa.</div>
 
-  <div class="card">
-    <h2>2 · Resultados por método</h2>
-    <div id="results"></div>
-  </div>
-
-  <div class="card">
-    <h2>3 · Ar de reposição &amp; duto</h2>
-    <div class="grid2" style="margin-bottom:12px">
-      <div class="kv"><div class="k">Ar de reposição (~90%)</div><div class="v" id="repVal">—</div></div>
-      <div class="kv"><div class="k">Subpressão da cozinha</div><div class="v" style="font-size:13px">mantém pressão negativa</div></div>
-    </div>
-    <label>Norma aplicável (limita a velocidade do duto)</label>
+    <label style="margin-top:12px">Norma p/ velocidade do duto</label>
     <div class="seg" id="normaSeg">
       <button data-norma="ambas" class="on">Ambas</button>
-      <button data-norma="gem">GEM / Decreto</button>
+      <button data-norma="gem">GEM/Decreto</button>
       <button data-norma="nbr">ABNT NBR</button>
     </div>
-    <label for="vDuto" style="margin-top:12px">Velocidade adotada no duto (m/s)</label>
+    <label for="vDuto" style="margin-top:12px">Velocidade no duto principal (m/s)</label>
     <input id="vDuto" type="number" inputmode="decimal" step="0.5" value="8" min="7.5" max="12.5">
-    <div class="hint" id="vDutoHint">Faixa válida (ambas as normas): 7,5 – 12,5 m/s. Valores fora da faixa são ajustados automaticamente.</div>
-    <div class="grid2" style="margin-top:10px">
-      <div class="kv"><div class="k">Área do duto</div><div class="v" id="dutoArea">—</div></div>
-      <div class="kv"><div class="k">Ø equivalente</div><div class="v" id="dutoDiam">—</div></div>
-    </div>
-    <div id="dutoWarn" class="note" style="display:none"></div>
+    <div class="hint" id="vDutoHint">Faixa válida (ambas as normas): 7,5 – 12,5 m/s.</div>
   </div>
 
+  <!-- COIFAS -->
   <div class="card">
-    <h2>4 · Checagem 60 renovações/h</h2>
-    <div class="row">
-      <div>
-        <label for="areaCoz">Área da cozinha (m²)</label>
-        <input id="areaCoz" type="number" inputmode="decimal" step="1" value="40">
-      </div>
-      <div>
-        <label for="peDir">Pé-direito (m)</label>
-        <input id="peDir" type="number" inputmode="decimal" step="0.1" value="3.0">
-      </div>
+    <h2>Coifas</h2>
+    <div id="hoods"></div>
+    <button class="addbtn" id="addHood">＋ Adicionar coifa</button>
+  </div>
+
+  <!-- RESUMO -->
+  <div class="card total">
+    <h2>Resumo do projeto</h2>
+    <div class="totalhero">
+      <div class="hlbl">Vazão total de exaustão</div>
+      <div class="hval" id="tTotal">— <small>m³/h</small></div>
     </div>
-    <label style="margin-top:10px">Taxa de renovação</label>
-    <div class="seg" id="renSeg">
-      <button data-ren="60" class="on">60 ren/h (padrão)</button>
-      <button data-ren="20">20 ren/h (só calor/vapor)</button>
+    <div class="grid2" style="margin-bottom:12px">
+      <div class="kv"><div class="k">Ar de reposição (~90%)</div><div class="v" id="tRep">—</div></div>
+      <div class="kv"><div class="k">Nº de coifas</div><div class="v" id="tQtd">—</div></div>
     </div>
+    <div class="grid2">
+      <div class="kv"><div class="k">Duto principal — área</div><div class="v" id="tDutoA">—</div></div>
+      <div class="kv"><div class="k">Duto principal — Ø equiv.</div><div class="v" id="tDutoD">—</div></div>
+    </div>
+    <div id="dutoWarn" class="alert alert-warn" style="display:none"></div>
+    <div id="renCheck" class="note" style="margin-top:12px">—</div>
     <div class="grid2" style="margin-top:12px">
-      <div class="kv"><div class="k">Volume da cozinha</div><div class="v" id="volVal">—</div></div>
-      <div class="kv"><div class="k">Vazão mínima exigida</div><div class="v" id="renVal">—</div></div>
+      <div class="kv"><div class="k">Volume da cozinha</div><div class="v" id="tVol">—</div></div>
+      <div class="kv"><div class="k">Exigência de renovação</div><div class="v" id="tReq">—</div></div>
     </div>
-    <div id="renCheck" class="note" style="margin-top:10px">—</div>
-    <div class="hint" style="margin-top:8px">Compara a soma das vazões das coifas (aqui, a vazão de projeto desta coifa) com 60 ren/h do volume. Para várias coifas, some as vazões.</div>
+  </div>
+
+  <!-- AÇÕES -->
+  <div class="card">
+    <h2>Ações</h2>
+    <div class="actions">
+      <button class="btn-primary" id="btnPDF">📄 Gerar PDF</button>
+      <button class="btn-ghost" id="btnShare">🔗 Compartilhar</button>
+    </div>
+    <div class="actions" style="margin-top:8px">
+      <button class="btn-ghost" id="btnSave">💾 Salvar</button>
+      <button class="btn-ghost" id="btnNew">🗑 Novo projeto</button>
+    </div>
+    <div class="hint" style="margin-top:8px">O projeto é salvo automaticamente neste aparelho.</div>
   </div>
 
   <div class="disclaimer">
-    <strong>Aviso técnico:</strong> ferramenta de apoio ao dimensionamento. Os resultados devem ser
-    verificados por profissional habilitado contra o texto vigente da ABNT NBR 14518 e do
-    Decreto Municipal 22281/2002 (GEM/RioLuz). Coeficientes da NBR Método I para churrasqueiras
-    a combustível sólido não são aplicados aqui por divergência de extração; use o Método II
-    (tabelas) e o Decreto para esses casos.
+    <strong>Aviso técnico:</strong> ferramenta de apoio ao dimensionamento. Verifique os resultados
+    contra o texto vigente da ABNT NBR 14518 e do Decreto Municipal 22281/2002 (GEM/RioLuz).
+    Para churrasqueiras/braseiros a combustível sólido, a NBR Método I não é aplicada aqui — usa-se
+    Método II (tabelas) e o Decreto.
   </div>
-
-  <div class="foot">
-    ExausTech · Calculadora de Vazão para Coifas
-  </div>
+  <div class="foot">ExausTech · Calculadora de Vazão para Coifas</div>
 </div>
 
+<div id="memorial"></div>
+<div id="toast"></div>
+
 <script>
-// ---------- Estado ----------
-const st = { tipo:'ilha', lados:1, classe:'moderado', cert:'nao', ren:60, norma:'ambas' };
+// ================= Modelo =================
+const proj = { nome:'', area:40, pe:3.0, ren:60, fs:15, norma:'ambas', vDuto:8, hoods:[] };
+let hoodSeq = 0;
 
-// Faixas de velocidade no duto por norma (m/s)
+const TIPOS = {
+  ilha:'Central / Ilha', parede:'Encostada em parede', capela:'Capela (3 lados)',
+  frontal:'Prateleira / frontal', churrasqueira:'Churrasqueira elétrica/gás',
+  braseiro:'Braseiro / forno a lenha', forno:'Forno a gás/elétrico'
+};
+const CLASSES = {leve:'Leve', moderado:'Moderado', severo:'Severo', solido:'Sólido'};
+
 const V_RANGE = {
-  ambas: {min:7.5,  max:12.5, label:'ambas as normas'},
-  gem:   {min:7.5,  max:14.0, label:'Decreto 22281 / GEM'},
-  nbr:   {min:2.54, max:12.5, label:'ABNT NBR 14518'}
+  ambas:{min:7.5,max:12.5,label:'ambas as normas'},
+  gem:{min:7.5,max:14.0,label:'Decreto 22281 / GEM'},
+  nbr:{min:2.54,max:12.5,label:'ABNT NBR 14518'}
 };
 
-// ---------- Tabelas NBR 14518 Método II (m³/h por metro linear) ----------
-// linha por estilo de coifa; colunas: leve, moderado, severo, solido
-const TAB2 = { // não certificada (Tabela 2)
-  parede:      {leve:1116, moderado:1674, severo:2232, solido:3068},
-  ilha_simples:{leve:2232, moderado:2790, severo:3348, solido:3902},
-  ilha_dupla:  {leve:1393, moderado:1674, severo:2232, solido:3068},
-  forno:       {leve:1393, moderado:1393, severo:null, solido:null},
-  prateleira:  {leve:1674, moderado:1674, severo:2232, solido:null}
+// Tabelas NBR 14518 Método II (m³/h por metro linear)
+const TAB2 = {
+  parede:{leve:1116,moderado:1674,severo:2232,solido:3068},
+  ilha_simples:{leve:2232,moderado:2790,severo:3348,solido:3902},
+  ilha_dupla:{leve:1393,moderado:1674,severo:2232,solido:3068},
+  forno:{leve:1393,moderado:1393,severo:null,solido:null},
+  prateleira:{leve:1674,moderado:1674,severo:2232,solido:null}
 };
-const TAB3 = { // certificada (Tabela 3) - usamos o mínimo como exigência
-  parede:      {leve:835,  moderado:1116, severo:1116, solido:1951},
-  ilha_simples:{leve:1393, moderado:1674, severo:1674, solido:3068},
-  ilha_dupla:  {leve:835,  moderado:1116, severo:1393, solido:2790},
-  forno:       {leve:835,  moderado:835,  severo:null, solido:null},
-  prateleira:  {leve:558,  moderado:1116, severo:1674, solido:null}
+const TAB3 = {
+  parede:{leve:835,moderado:1116,severo:1116,solido:1951},
+  ilha_simples:{leve:1393,moderado:1674,severo:1674,solido:3068},
+  ilha_dupla:{leve:835,moderado:1116,severo:1393,solido:2790},
+  forno:{leve:835,moderado:835,severo:null,solido:null},
+  prateleira:{leve:558,moderado:1116,severo:1674,solido:null}
 };
-
-// mapeia tipo de coifa -> linha da tabela NBR II
-function linhaTab(tipo){
-  if(tipo==='ilha') return 'ilha_simples';
-  if(tipo==='parede'||tipo==='capela') return 'parede';
-  if(tipo==='frontal') return 'prateleira';
-  if(tipo==='forno') return 'forno';
-  if(tipo==='churrasqueira'||tipo==='braseiro') return 'parede'; // conservador; ajuste se em ilha
-  return 'parede';
+function linhaTab(t){
+  if(t==='ilha')return'ilha_simples';
+  if(t==='parede'||t==='capela')return'parede';
+  if(t==='frontal')return'prateleira';
+  if(t==='forno')return'forno';
+  if(t==='churrasqueira'||t==='braseiro')return'parede';
+  return'parede';
+}
+function perimetroAberto(t,C,L,l){
+  if(t==='ilha')return 2*(C+L);
+  if(t==='parede')return l===1?(C+2*L):(C+L);
+  if(t==='capela')return C;
+  if(t==='frontal')return C;
+  return 2*(C+L);
 }
 
-// ---------- Geometria ----------
-function perimetroAberto(tipo,C,Larg,lados){
-  // perímetro dos lados abertos (m)
-  if(tipo==='ilha') return 2*(C+Larg);
-  if(tipo==='parede') return lados===1 ? (C + 2*Larg) : (C + Larg);
-  if(tipo==='capela') return C;             // 3 lados fechados: só a frente
-  if(tipo==='frontal') return C;
-  return 2*(C+Larg);
+// ================= Cálculos =================
+function metodoI(t,C,L,H,l){
+  const A1=C*L, A2=perimetroAberto(t,C,L,l)*H;
+  if(t==='ilha')  return {q:Math.max(0.64*A1,0.25*A2)*3600, det:'máx(0,64·A1 ; 0,25·A2)·3600'};
+  if(t==='parede')return {q:Math.max(0.40*A1,0.25*A2)*3600, det:'máx(0,40·A1 ; 0,25·A2)·3600'};
+  if(t==='forno') return {q:0.50*A1*3600, det:'0,50·(C·Larg)·3600'};
+  if(t==='frontal')return {q:0.34*H*C*3600, det:'0,34·H·C·3600'};
+  return {q:null, det:'—'};
 }
-
-// ---------- NBR 14518 Método I (velocidade de face) ----------
-function metodoI(tipo,C,Larg,H,lados){
-  const A1 = C*Larg;                        // área em planta / face horizontal
-  const P  = perimetroAberto(tipo,C,Larg,lados);
-  const A2 = P*H;                           // área pelo perímetro x altura
-  let q=null, det='';
-  if(tipo==='ilha'){
-    const q1=0.64*A1, q2=0.25*A2; q=Math.max(q1,q2)*3600;
-    det=`máx( 0,64·A1 ; 0,25·A2 )·3600 · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)} m²`;
-  } else if(tipo==='parede'){
-    const q1=0.40*A1, q2=0.25*A2; q=Math.max(q1,q2)*3600;
-    det=`máx( 0,40·A1 ; 0,25·A2 )·3600 · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)} m²`;
-  } else if(tipo==='forno'){
-    q=0.50*A1*3600; det=`0,50·(C·Larg)·3600 · A=${A1.toFixed(2)} m²`;
-  } else if(tipo==='frontal'){
-    q=0.34*H*C*3600; det=`0,34·H·C·3600`;
-  } else {
-    return {q:null, det:'Não aplicável neste método — usar Método II / Decreto'};
-  }
-  return {q, det};
+function metodoII(t,C,classe,cert){
+  const linha=linhaTab(t), tab=cert?TAB3:TAB2, val=tab[linha][classe];
+  if(val==null)return {q:null, det:`não permitido (${linha}/${classe})`};
+  return {q:val*C, det:`${val} m³/h·m × ${C.toFixed(2)} m`};
 }
-
-// ---------- NBR 14518 Método II (tabelas) ----------
-function metodoII(tipo,C,classe,cert){
-  const linha=linhaTab(tipo);
-  const tab = cert==='sim'?TAB3:TAB2;
-  const val = tab[linha][classe];
-  if(val==null) return {q:null, det:`Combinação não permitida (${linha}/${classe})`};
-  const q=val*C;
-  return {q, det:`${val} m³/h·m × ${C.toFixed(2)} m (linha ${linha}, ${cert==='sim'?'certificada':'não cert.'})`};
+function decreto(t,C,L,H,l){
+  const A1=C*L, A2=perimetroAberto(t,C,L,l)*H;
+  if(t==='ilha')  return {q:Math.max(2300*A1,915*A2), det:'máx(2300·A1 ; 915·A2)'};
+  if(t==='parede')return {q:Math.max(1460*A1,915*A2), det:'máx(1460·A1 ; 915·A2)'};
+  if(t==='capela')return {q:1150*C, det:'1150·C'};
+  if(t==='frontal')return {q:1150*C, det:'1150·C'};
+  if(t==='churrasqueira')return {q:1440*C*L, det:'1440·C·Larg'};
+  if(t==='braseiro')return {q:1836*C*H, det:'1836·C·H'};
+  if(t==='forno') return {q:1800*C*L, det:'1800·C·Larg'};
+  return {q:null, det:'—'};
 }
-
-// ---------- Decreto 22281 Art. 63 ----------
-function decreto(tipo,C,Larg,H,lados){
-  const A1=C*Larg;
-  const A2=perimetroAberto(tipo,C,Larg,lados)*H;
-  let q=null, det='';
-  if(tipo==='ilha'){
-    q=Math.max(2300*A1, 915*A2); det=`máx( 2300·A1 ; 915·A2 ) · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)}`;
-  } else if(tipo==='parede'){
-    q=Math.max(1460*A1, 915*A2); det=`máx( 1460·A1 ; 915·A2 ) · A1=${A1.toFixed(2)} A2=${A2.toFixed(2)}`;
-  } else if(tipo==='capela'){
-    q=1150*C; det=`1150·C`;
-  } else if(tipo==='frontal'){
-    q=1150*C; det=`1150·C (tratado como capela/low-side)`;
-  } else if(tipo==='churrasqueira'){
-    q=1440*C*Larg; det=`1440·C·Larg`;
-  } else if(tipo==='braseiro'){
-    q=1836*C*H; det=`1836·C·H`;
-  } else if(tipo==='forno'){
-    q=1800*C*Larg; det=`1800·C·Larg`;
-  }
-  return {q, det};
-}
-
-// ---------- Render ----------
-function fmt(v){ return v==null?'—':Math.round(v).toLocaleString('pt-BR'); }
-function fmtV(v){ return v.toString().replace('.',','); }
-
-function aplicarFaixaNorma(){
-  const rng=V_RANGE[st.norma];
-  const inp=document.getElementById('vDuto');
-  inp.min=rng.min; inp.max=rng.max;
-  document.getElementById('vDutoHint').textContent=
-    `Faixa válida (${rng.label}): ${fmtV(rng.min)} – ${fmtV(rng.max)} m/s. Valores fora da faixa são ajustados automaticamente.`;
-  let v=parseFloat(inp.value);
-  if(!isFinite(v)||v<rng.min) inp.value=rng.min;
-  else if(v>rng.max) inp.value=rng.max;
-}
-
-function calc(){
-  const C=parseFloat(document.getElementById('C').value)||0;
-  const Larg=parseFloat(document.getElementById('Larg').value)||0;
-  const H=parseFloat(document.getElementById('H').value)||0;
-
-  const mI  = metodoI(st.tipo,C,Larg,H,st.lados);
-  const mII = metodoII(st.tipo,C,st.classe,st.cert);
-  const dec = decreto(st.tipo,C,Larg,H,st.lados);
-
+function calcHood(h){
+  const C=+h.C||0, L=+h.Larg||0, H=+h.H||0;
+  const mI=metodoI(h.tipo,C,L,H,h.lados);
+  const mII=metodoII(h.tipo,C,h.classe,h.cert);
+  const dec=decreto(h.tipo,C,L,H,h.lados);
   const cands=[mI.q,mII.q,dec.q].filter(x=>x!=null&&isFinite(x));
-  const base = cands.length?Math.max(...cands):null;
+  const base=cands.length?Math.max(...cands):null;
+  const projeto=base!=null?base*(1+(+proj.fs||0)/100):null;
+  return {mI,mII,dec,base,projeto};
+}
 
-  // fator de segurança
-  const fs=parseFloat(document.getElementById('fs').value)||0;
-  const projeto = base!=null ? base*(1+fs/100) : null;
+// ================= Helpers =================
+function fmt(v){return v==null?'—':Math.round(v).toLocaleString('pt-BR');}
+function fmtV(v){return v.toString().replace('.',',');}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200);}
 
-  // resultados
-  const R=document.getElementById('results');
-  R.innerHTML='';
-  R.appendChild(card('NBR 14518 · Método I (velocidade de face)', mI.q, mI.det));
-  R.appendChild(card('NBR 14518 · Método II (tabelas)', mII.q, mII.det));
-  R.appendChild(card('Decreto 22281 · Art. 63 (GEM/RioLuz)', dec.q, dec.det));
-  const heroDet = base!=null
-    ? `máx( métodos ) = ${fmt(base)} m³/h  +  ${fmtV(fs)}% de fator de segurança`
-    : 'Maior valor entre os métodos aplicáveis';
-  R.appendChild(card('Vazão de projeto recomendada', projeto, heroDet, true));
+// ================= Render coifas =================
+function segHtml(group,id,current,opts){
+  return `<div class="seg" data-seg="${group}" data-id="${id}">`+
+    Object.entries(opts).map(([k,v])=>`<button data-val="${k}" class="${k===current?'on':''}">${v}</button>`).join('')+`</div>`;
+}
+function hoodHtml(h){
+  const n=proj.hoods.indexOf(h)+1;
+  return `<div class="hood" data-id="${h.id}">
+    <div class="htop"><span class="htitle">COIFA ${n}</span>
+      <button class="rm" data-act="rm" data-id="${h.id}">Remover</button></div>
+    <label>Tipo de coifa</label>
+    <select data-f="tipo" data-id="${h.id}">${Object.entries(TIPOS).map(([k,v])=>`<option value="${k}" ${k===h.tipo?'selected':''}>${v}</option>`).join('')}</select>
+    <div data-lados="${h.id}" style="display:${h.tipo==='parede'?'block':'none'}">
+      <label>Lados fechados</label>
+      ${segHtml('lados',h.id,String(h.lados),{'1':'1 lado','2':'2 lados'})}
+    </div>
+    <div class="row">
+      <div><label>Comprimento C (m)</label><input type="number" inputmode="decimal" step="0.05" value="${h.C}" data-f="C" data-id="${h.id}"></div>
+      <div data-larg="${h.id}"><label>Largura (m)</label><input type="number" inputmode="decimal" step="0.05" value="${h.Larg}" data-f="Larg" data-id="${h.id}"></div>
+    </div>
+    <label>Altura da abertura H (m)</label>
+    <input type="number" inputmode="decimal" step="0.05" value="${h.H}" data-f="H" data-id="${h.id}">
+    <label style="margin-top:10px">Classe do efluente</label>
+    ${segHtml('classe',h.id,h.classe,CLASSES)}
+    <label style="margin-top:10px">Certificada?</label>
+    ${segHtml('cert',h.id,h.cert?'sim':'nao',{nao:'Não',sim:'Sim'})}
+    <div class="hres">
+      <div class="hlbl">Vazão de projeto</div>
+      <div class="hval" id="hres-${h.id}">— <small>m³/h</small></div>
+    </div>
+    <details class="methods"><summary>Ver métodos</summary><div id="hdet-${h.id}"></div></details>
+  </div>`;
+}
+function renderHoods(){
+  const c=document.getElementById('hoods');
+  c.innerHTML=proj.hoods.map(hoodHtml).join('');
+  proj.hoods.forEach(h=>{
+    const root=c.querySelector(`.hood[data-id="${h.id}"]`);
+    root.querySelector('[data-f="tipo"]').addEventListener('change',e=>{
+      h.tipo=e.target.value;
+      root.querySelector(`[data-lados="${h.id}"]`).style.display = h.tipo==='parede'?'block':'none';
+      const needL=['ilha','parede','capela','churrasqueira','forno'].includes(h.tipo);
+      root.querySelector(`[data-larg="${h.id}"]`).style.visibility = needL?'visible':'hidden';
+      updateAll();
+    });
+    root.querySelectorAll('input[data-f]').forEach(inp=>inp.addEventListener('input',e=>{
+      h[e.target.dataset.f]=e.target.value; updateAll();
+    }));
+    root.querySelectorAll('[data-seg]').forEach(seg=>{
+      seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+        seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+        b.classList.add('on');
+        const g=seg.dataset.seg, v=b.dataset.val;
+        if(g==='lados')h.lados=+v; else if(g==='cert')h.cert=(v==='sim'); else h[g]=v;
+        updateAll();
+      }));
+    });
+    root.querySelector('[data-act="rm"]').addEventListener('click',()=>{
+      proj.hoods=proj.hoods.filter(x=>x!==h);
+      if(proj.hoods.length===0)addHood();
+      renderHoods(); updateAll();
+    });
+    const needL=['ilha','parede','capela','churrasqueira','forno'].includes(h.tipo);
+    root.querySelector(`[data-larg="${h.id}"]`).style.visibility = needL?'visible':'hidden';
+  });
+}
+function addHood(data){
+  proj.hoods.push(Object.assign({id:++hoodSeq,tipo:'ilha',lados:1,C:2.0,Larg:1.10,H:0.60,classe:'moderado',cert:false},data||{}));
+}
 
-  // ar de reposição
-  document.getElementById('repVal').innerHTML = projeto? fmt(projeto*0.9)+' <small style="font-size:11px;color:#9db4d0">m³/h</small>' : '—';
+// ================= Update =================
+function updateAll(){
+  let total=0;
+  proj.hoods.forEach(h=>{
+    const r=calcHood(h);
+    const el=document.getElementById('hres-'+h.id);
+    if(el)el.innerHTML = r.projeto!=null?`${fmt(r.projeto)} <small>m³/h</small>`:'Não aplicável';
+    const det=document.getElementById('hdet-'+h.id);
+    if(det)det.innerHTML=
+      mrow('NBR Método I',r.mI.q,r.mI.det)+
+      mrow('NBR Método II',r.mII.q,r.mII.det)+
+      mrow('Decreto 22281',r.dec.q,r.dec.det)+
+      mrow('Base × FS '+fmtV(proj.fs)+'%',r.projeto,'maior valor + fator');
+    if(r.projeto!=null)total+=r.projeto;
+  });
 
-  // duto — velocidade limitada à faixa da norma selecionada
-  const rng=V_RANGE[st.norma];
-  const inp=document.getElementById('vDuto');
-  let vD=parseFloat(inp.value);
+  // total
+  document.getElementById('tTotal').innerHTML = total>0?`${fmt(total)} <small>m³/h</small>`:'— <small>m³/h</small>';
+  document.getElementById('tRep').textContent = total>0?fmt(total*0.9)+' m³/h':'—';
+  document.getElementById('tQtd').textContent = proj.hoods.length;
+
+  // duto principal
+  const rng=V_RANGE[proj.norma], inp=document.getElementById('vDuto');
+  let vD=parseFloat(inp.value); let clamped=false;
+  if(!isFinite(vD)){vD=rng.min;}
+  if(vD<rng.min){vD=rng.min;clamped=true;}
+  if(vD>rng.max){vD=rng.max;clamped=true;}
+  if(clamped && document.activeElement!==inp)inp.value=vD;
+  proj.vDuto=vD;
+  if(total>0&&vD>0){
+    const area=total/3600/vD, diam=Math.sqrt(4*area/Math.PI)*1000;
+    document.getElementById('tDutoA').textContent=area.toFixed(3)+' m²';
+    document.getElementById('tDutoD').textContent=Math.round(diam)+' mm';
+  } else {document.getElementById('tDutoA').textContent='—';document.getElementById('tDutoD').textContent='—';}
   const dw=document.getElementById('dutoWarn');
-  let clamped=false;
-  if(!isFinite(vD)){ vD=rng.min; }
-  if(vD<rng.min){ vD=rng.min; clamped=true; }
-  if(vD>rng.max){ vD=rng.max; clamped=true; }
-  if(clamped && document.activeElement!==inp){ inp.value=vD; }
-  if(projeto&&vD>0){
-    const area=projeto/3600/vD;                 // m²
-    const diam=Math.sqrt(4*area/Math.PI)*1000;  // mm
-    document.getElementById('dutoArea').textContent=area.toFixed(3)+' m²';
-    document.getElementById('dutoDiam').textContent=Math.round(diam)+' mm';
-  }
-  if(clamped){
-    dw.style.display='flex';
-    dw.className='alert alert-warn';
-    dw.innerHTML=`<span class="ico">⚠️</span><span><b>Velocidade ajustada para ${fmtV(vD)} m/s</b> — limite da faixa de ${rng.label} (${fmtV(rng.min)}–${fmtV(rng.max)} m/s).</span>`;
-  } else { dw.style.display='none'; }
+  if(clamped){dw.style.display='flex';
+    dw.innerHTML=`<span class="ico">⚠️</span><span><b>Velocidade ajustada para ${fmtV(vD)} m/s</b> — limite de ${rng.label} (${fmtV(rng.min)}–${fmtV(rng.max)} m/s).</span>`;
+  } else dw.style.display='none';
 
   // 60 renovações
-  const A=parseFloat(document.getElementById('areaCoz').value)||0;
-  const pe=parseFloat(document.getElementById('peDir').value)||0;
-  const vol=A*pe;
-  const req=vol*st.ren;
-  document.getElementById('volVal').textContent=vol?fmt(vol)+' m³':'—';
-  document.getElementById('renVal').textContent=req?fmt(req)+' m³/h':'—';
+  const vol=(+proj.area||0)*(+proj.pe||0), req=vol*proj.ren;
+  document.getElementById('tVol').textContent=vol?fmt(vol)+' m³':'—';
+  document.getElementById('tReq').textContent=req?fmt(req)+' m³/h':'—';
   const rc=document.getElementById('renCheck');
-  if(projeto&&req){
-    if(projeto>=req){
-      rc.className='alert alert-ok';
-      rc.innerHTML=`<span class="ico">✅</span><span><b>Atende às 60 renovações/h.</b> Vazão de projeto (${fmt(projeto)} m³/h) ≥ exigência (${fmt(req)} m³/h).</span>`;
-    } else {
-      rc.className='alert alert-bad';
-      rc.innerHTML=`<span class="ico">🚨</span><span><b>A renovação manda!</b> Exigência (${fmt(req)} m³/h) &gt; vazão desta coifa (${fmt(projeto)} m³/h). Adote ${fmt(req)} m³/h ou some as demais coifas.</span>`;
+  if(total>0&&req){
+    if(total>=req){rc.className='alert alert-ok';
+      rc.innerHTML=`<span class="ico">✅</span><span><b>Atende à renovação.</b> Vazão total (${fmt(total)} m³/h) ≥ exigência (${fmt(req)} m³/h).</span>`;
+    } else {rc.className='alert alert-bad';
+      rc.innerHTML=`<span class="ico">🚨</span><span><b>A renovação manda!</b> Exigência (${fmt(req)} m³/h) &gt; vazão total (${fmt(total)} m³/h). Aumente a exaustão para ≥ ${fmt(req)} m³/h.</span>`;
     }
-  } else { rc.className='note'; rc.textContent='—'; }
+  } else {rc.className='note';rc.textContent='—';}
+
+  save(true);
+}
+function mrow(name,q,det){
+  const v=q==null?`<span class="mv na">n/a</span>`:`<span class="mv">${fmt(q)} m³/h</span>`;
+  return `<div class="mrow"><span class="mn">${name}<br><span style="font-size:10px;opacity:.7">${det}</span></span>${v}</div>`;
 }
 
-function card(name,val,formula,hero){
-  const d=document.createElement('div');
-  d.className='result'+(hero?' hero':'')+(val==null?' na':'');
-  const valHtml = val==null
-    ? `<div class="val">Não aplicável</div>`
-    : `<div class="val">${fmt(val)} <small>m³/h</small></div>`;
-  d.innerHTML=`<div class="name">${name}</div>${valHtml}<div class="formula">${formula}</div>`;
-  return d;
+// ================= Norma / faixa =================
+function aplicarFaixaNorma(){
+  const rng=V_RANGE[proj.norma], inp=document.getElementById('vDuto');
+  inp.min=rng.min;inp.max=rng.max;
+  document.getElementById('vDutoHint').textContent=`Faixa válida (${rng.label}): ${fmtV(rng.min)} – ${fmtV(rng.max)} m/s.`;
+  let v=parseFloat(inp.value);
+  if(!isFinite(v)||v<rng.min)inp.value=rng.min; else if(v>rng.max)inp.value=rng.max;
 }
 
-// ---------- UI wiring ----------
-function segWire(id,key,cast){
-  document.querySelectorAll('#'+id+' button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.remove('on'));
-      b.classList.add('on');
-      st[key]=cast?cast(b.dataset[key]):b.dataset[key];
-      calc();
-    });
-  });
+// ================= Persistência =================
+const KEY='exaustech_projeto_v1';
+function save(silent){
+  try{localStorage.setItem(KEY,JSON.stringify(proj));}catch(e){}
+  if(!silent)toast('Projeto salvo neste aparelho');
 }
-segWire('ladosSeg','lados',v=>parseInt(v));
-segWire('classeSeg','classe');
-segWire('certSeg','cert');
-segWire('renSeg','ren',v=>parseInt(v));
+function load(){
+  try{
+    const h=location.hash.match(/data=([^&]+)/);
+    let data=null;
+    if(h){data=JSON.parse(decodeURIComponent(escape(atob(h[1]))));history.replaceState(null,'',location.pathname);}
+    else{const s=localStorage.getItem(KEY);if(s)data=JSON.parse(s);}
+    if(data){Object.assign(proj,data);proj.hoods=data.hoods||[];proj.hoods.forEach(hh=>{if(hh.id>hoodSeq)hoodSeq=hh.id;});}
+  }catch(e){}
+  if(!proj.hoods||proj.hoods.length===0){proj.hoods=[];addHood();}
+}
+function syncProjInputs(){
+  document.getElementById('pNome').value=proj.nome||'';
+  document.getElementById('areaCoz').value=proj.area;
+  document.getElementById('peDir').value=proj.pe;
+  document.getElementById('fs').value=proj.fs;
+  document.getElementById('vDuto').value=proj.vDuto;
+  setSeg('renSeg',String(proj.ren));
+  setSeg('normaSeg',proj.norma);
+}
+function setSeg(id,val){document.querySelectorAll('#'+id+' button').forEach(b=>{
+  b.classList.toggle('on', b.dataset[Object.keys(b.dataset)[0]]===val);});}
 
-// seletor de norma: ajusta a faixa e recalcula
-document.querySelectorAll('#normaSeg button').forEach(b=>{
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('#normaSeg button').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    st.norma=b.dataset.norma;
-    aplicarFaixaNorma();
-    calc();
-  });
+// ================= Compartilhar =================
+function textSummary(){
+  let t=`EXAUSTECH — Cálculo de vazão para coifas\n`;
+  if(proj.nome)t+=`Obra: ${proj.nome}\n`;
+  let total=0;
+  proj.hoods.forEach((h,i)=>{const r=calcHood(h);if(r.projeto!=null)total+=r.projeto;
+    t+=`Coifa ${i+1} (${TIPOS[h.tipo]}, ${h.C}×${h.Larg} m): ${fmt(r.projeto)} m³/h\n`;});
+  t+=`VAZÃO TOTAL: ${fmt(total)} m³/h\n`;
+  t+=`Ar de reposição (~90%): ${fmt(total*0.9)} m³/h`;
+  return t;
+}
+async function share(){
+  const txt=textSummary();
+  const link=location.origin+location.pathname+'#data='+btoa(unescape(encodeURIComponent(JSON.stringify(proj))));
+  if(navigator.share){try{await navigator.share({title:'Cálculo de vazão — EXAUSTECH',text:txt,url:link});return;}catch(e){if(e.name==='AbortError')return;}}
+  try{await navigator.clipboard.writeText(txt+'\n'+link);toast('Resumo e link copiados');}catch(e){toast('Não foi possível compartilhar');}
+}
+
+// ================= PDF / memorial =================
+function buildMemorial(){
+  let total=0;const rows=proj.hoods.map((h,i)=>{
+    const r=calcHood(h);if(r.projeto!=null)total+=r.projeto;
+    return `<tr><td>${i+1}</td><td>${TIPOS[h.tipo]}</td><td>${h.C}×${h.Larg}×${h.H}</td><td>${CLASSES[h.classe]}</td>
+      <td>${fmt(r.mI.q)}</td><td>${fmt(r.mII.q)}</td><td>${fmt(r.dec.q)}</td><td class="tot">${fmt(r.projeto)}</td></tr>`;
+  }).join('');
+  const vol=(+proj.area||0)*(+proj.pe||0), req=vol*proj.ren;
+  const area=total>0&&proj.vDuto>0?(total/3600/proj.vDuto):0;
+  const diam=area>0?Math.sqrt(4*area/Math.PI)*1000:0;
+  const d=new Date().toLocaleDateString('pt-BR');
+  document.getElementById('memorial').innerHTML=`
+    <div class="mbrand">EXAUSTECH</div>
+    <h1>Memorial de Cálculo — Vazão de Exaustão de Coifas</h1>
+    <div class="muted">Normas: ABNT NBR 14518 e Decreto Municipal 22281/2002 (GEM/RioLuz) · Emitido em ${d}</div>
+    ${proj.nome?`<p><b>Obra/cliente:</b> ${proj.nome}</p>`:''}
+    <h2>Dados do projeto</h2>
+    <table><tr><td>Área da cozinha</td><td>${proj.area} m²</td><td>Pé-direito</td><td>${proj.pe} m</td></tr>
+    <tr><td>Volume</td><td>${fmt(vol)} m³</td><td>Renovação exigida</td><td>${proj.ren} ren/h = ${fmt(req)} m³/h</td></tr>
+    <tr><td>Fator de segurança</td><td>${fmtV(proj.fs)}%</td><td>Veloc. duto</td><td>${fmtV(proj.vDuto)} m/s</td></tr></table>
+    <h2>Coifas</h2>
+    <table><thead><tr><th>#</th><th>Tipo</th><th>C×L×H (m)</th><th>Classe</th>
+      <th>NBR I</th><th>NBR II</th><th>Decreto</th><th>Projeto (m³/h)</th></tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr class="tot"><td colspan="7">VAZÃO TOTAL DE EXAUSTÃO</td><td>${fmt(total)}</td></tr>
+      <tr><td colspan="7">Ar de reposição (~90%)</td><td>${fmt(total*0.9)}</td></tr></tfoot></table>
+    <h2>Duto principal</h2>
+    <table><tr><td>Vazão total</td><td>${fmt(total)} m³/h</td><td>Velocidade</td><td>${fmtV(proj.vDuto)} m/s</td></tr>
+    <tr><td>Área do duto</td><td>${area.toFixed(3)} m²</td><td>Ø equivalente</td><td>${Math.round(diam)} mm</td></tr></table>
+    <h2>Verificação de renovação</h2>
+    <p>${total>=req?'ATENDE':'NÃO ATENDE'} — vazão total ${fmt(total)} m³/h ${total>=req?'≥':'<'} exigência ${fmt(req)} m³/h (${proj.ren} ren/h).</p>
+    <p class="muted" style="margin-top:14px">Documento gerado por ferramenta de apoio ExausTech. Os valores devem ser
+    conferidos por profissional habilitado contra o texto vigente das normas. Método I da NBR não aplicado a
+    churrasqueiras/braseiros a combustível sólido.</p>`;
+}
+function gerarPDF(){buildMemorial();setTimeout(()=>window.print(),80);}
+
+// ================= Wiring =================
+document.getElementById('addHood').addEventListener('click',()=>{addHood();renderHoods();updateAll();});
+document.getElementById('btnPDF').addEventListener('click',gerarPDF);
+document.getElementById('btnShare').addEventListener('click',share);
+document.getElementById('btnSave').addEventListener('click',()=>save(false));
+document.getElementById('btnNew').addEventListener('click',()=>{
+  if(confirm('Iniciar um novo projeto? Os dados atuais serão apagados.')){
+    proj.nome='';proj.hoods=[];hoodSeq=0;addHood();
+    localStorage.removeItem(KEY);syncProjInputs();renderHoods();aplicarFaixaNorma();updateAll();toast('Novo projeto');
+  }
 });
+['pNome','areaCoz','peDir','fs','vDuto'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{
+  const map={pNome:'nome',areaCoz:'area',peDir:'pe',fs:'fs',vDuto:'vDuto'};
+  proj[map[id]]=id==='pNome'?e.target.value:e.target.value;updateAll();
+}));
+document.querySelectorAll('#renSeg button').forEach(b=>b.addEventListener('click',()=>{
+  setSeg('renSeg',b.dataset.ren);proj.ren=+b.dataset.ren;updateAll();}));
+document.querySelectorAll('#normaSeg button').forEach(b=>b.addEventListener('click',()=>{
+  setSeg('normaSeg',b.dataset.norma);proj.norma=b.dataset.norma;aplicarFaixaNorma();updateAll();}));
 
-// ao sair do campo de velocidade, trava dentro da faixa
-document.getElementById('vDuto').addEventListener('blur',()=>{ aplicarFaixaNorma(); calc(); });
-
-const tipoSel=document.getElementById('tipo');
-tipoSel.addEventListener('change',()=>{
-  st.tipo=tipoSel.value;
-  // mostra/oculta campos conforme tipo
-  document.getElementById('ladosBox').style.display = (st.tipo==='parede')?'block':'none';
-  const needLarg = ['ilha','parede','capela','churrasqueira','forno'].includes(st.tipo);
-  document.getElementById('largBox').style.visibility = needLarg?'visible':'hidden';
-  calc();
-});
-
-['C','Larg','H','fs','vDuto','areaCoz','peDir'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',calc);
-});
-
+// ================= Init =================
+load();
+syncProjInputs();
+renderHoods();
 aplicarFaixaNorma();
-calc();
+updateAll();
 
-// ---------- PWA install ----------
-let deferred;
-const btn=document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;btn.style.display='block';});
-btn.addEventListener('click',async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;btn.style.display='none';});
-if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-}
+// PWA install + SW
+let deferred;const ib=document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;ib.style.display='block';});
+ib.addEventListener('click',async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;ib.style.display='none';});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
 </script>
 </body>
 </html>
