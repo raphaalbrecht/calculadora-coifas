@@ -7,7 +7,7 @@
 <meta name="description" content="Cálculo de vazão de exaustão para coifas conforme NBR 14518 e Decreto 22281 (GEM/RioLuz).">
 <meta name="theme-color" content="#0f2c4c">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEQklEQVR4nO3dPW4UQRSF0QGRk7EKxEogIydnQeTkZLASxCrIWAFElgyyzUx3/by6dU6Ou7rq83PPCM1cLgAAAAAAAAAAAMDTns1ewBEvX7/9PXsNu/j149tSjZRfrHjrqRx5yYWJeB3V4i61GCGvq0rYJRYh5Byzw556cSHnmhX28xkXvVzEnG7W+U4JWsx7mHHOQ/8sCHlfox5Bhk1oMe9t1PkPCVrMXC5jOuj+ZyAx5lef3g+5zs+PX4ZcZ7Sejx9dJ3RizJzXs4tuQYuZp/TqY9r70NBDl6BNZ67Ro5PmQYuZW7TupWnQYuaIlt14hiZKs6BNZ85o1Y8JTZQmQZvOtNCiIxOaKKeDNp1p6WxPJjRRBE2UU0F73KCHM12Z0EQRNFEETRRBE+Vw0F4Q0tPRvkxoogiaKIImiqCJImiiCJoogiaKoInyYvYCRhr1IYuttFpv6oc+PmSbCb1azC3tdO/bBM0etgh6pwn1mF32ID7oXQ7yGjvsRXzQ7CU66B0m0q3S9yQ6aB6WHHVs0MmHxuMigxbz/6XuUWTQXCcx6rigEw+J60UFLebbpe1ZVNAckxR1TNBJh8JxEUGL+byUPYwImjYSol4+6IRDoJ3lg6at1QfE0kGvvvlVrbyvywa98qbTz7JB09eqA2PJoFfd7NWsuM/LBb3iJjPOckEz1moDZKmgV9vcFCvt+zJBr7SpzLNM0My1ykBZIuhVNjPdCudQPugVNpE6ygdNLdUHTOmgq2/eriqfS+mg4VZlg648Bah7PiWDrrpZ/K3iOZUMGo4qF3TF33oeV+28yn1p0E5fcEN75SY0nCFoomwV9JsPX7e79sx7nmGboO8OdsYBz7r2zHueZZug2cMWQf87oUZOrFnXnnnPM20R9Cy7RFRJfNCPRZX8ArHiPY8SHfT/DrDnAc+69sx7riA66FnSo6ksNuhro2od3y0/b9a1k3/hYoNmT5FB3zqBWk2sIz9n1rVTp/Szo//w5eu3v1supLf7B/j987strj3znlv49ePbzX1GTmj2JWiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIcDvrIR53CtY72ZUITRdBEETRRBE2UU0F7YUgPZ7oyoYkiaKKcDtpjBy2d7alJjKt9ZyF1nQ26ySOHKU0LLTryDE2UZkGb0pzRqh8TmihNgzalOaJlN80ntKi5ReteujxyiJpr9OjEMzRRugVtSvOUXn10ndCi5iE9u+j+yCFq7uvdw5BnaFFzuYzpYNiLQlHvbdT5T4nM/87bx+hBNuVtO9N6DzPOedr70KLONut8S0TlESTH7EFVIug7wl7X7JDvlFjEv4S9jioh3ym1mIeIu55qEd9XdmFPEfk4leMFAAAAAAAAAAAY5g9/ASkqmR8khwAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,8 +15,9 @@
 <style>
   :root{
     --bg:#0b1b2e; --panel:#12263f; --panel2:#193353;
-    --line:#26436b; --txt:#eaf1fb; --muted:#9db4d0; --accent:#3d8bff;
-    --accent2:#25c2a0; --warn:#ffb020; --bad:#ff5a6a; --chip:#1d3a5c;
+    --line:#26436b; --txt:#eaf1fb; --muted:#9db4d0; --accent:#2b8ac9;
+    --accent2:#4aa3db; --warn:#ffb020; --bad:#ff5a6a; --chip:#1d3a5c;
+    --brandblue:#2b8ac9; --brandblue-d:#1c69a3; --brandgray:#5a616a;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -31,7 +32,7 @@
     padding:20px 18px 14px; text-align:center;
     border-bottom:1px solid var(--line); background:rgba(15,44,76,.4);
   }
-  header .brand{font-size:22px;font-weight:800;letter-spacing:3px;color:var(--accent2);margin:0 0 6px}
+  header .logo{width:100%;max-width:320px;height:auto;display:block;margin:0 auto 10px}
   header h1{font-size:18px;margin:0 0 3px;font-weight:700;letter-spacing:.2px}
   header p{margin:0;font-size:12.5px;color:var(--muted)}
   .wrap{max-width:660px;margin:0 auto;padding:16px 14px 60px}
@@ -58,11 +59,11 @@
   .hood .rm{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;
     padding:5px 10px;font-size:12px;cursor:pointer}
   .hood .rm:hover{color:var(--bad);border-color:var(--bad)}
-  .hres{margin-top:12px;background:linear-gradient(135deg,#0f4a3a,#1b6b52);border:1px solid #25c2a0;
+  .hres{margin-top:12px;background:linear-gradient(135deg,#123f63,#1c69a3);border:1px solid #2b8ac9;
     border-radius:10px;padding:11px 13px}
-  .hres .hlbl{font-size:11px;color:#bff3e4;text-transform:uppercase;letter-spacing:.5px}
+  .hres .hlbl{font-size:11px;color:#bcdcf3;text-transform:uppercase;letter-spacing:.5px}
   .hres .hval{font-size:22px;font-weight:800}
-  .hres .hval small{font-size:12px;font-weight:600;color:#bff3e4}
+  .hres .hval small{font-size:12px;font-weight:600;color:#bcdcf3}
   details.methods{margin-top:9px}
   details.methods summary{font-size:12px;color:var(--accent);cursor:pointer;padding:3px 0}
   .mrow{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid rgba(38,67,107,.5)}
@@ -76,11 +77,11 @@
   .kv{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:11px}
   .kv .k{font-size:11px;color:var(--muted)} .kv .v{font-size:17px;font-weight:700;margin-top:2px}
   .total .kv{background:linear-gradient(135deg,#12263f,#173251)}
-  .totalhero{background:linear-gradient(135deg,#0f4a3a,#1b6b52);border:1px solid #25c2a0;
+  .totalhero{background:linear-gradient(135deg,#123f63,#1c69a3);border:1px solid #2b8ac9;
     border-radius:12px;padding:14px;margin-bottom:12px}
-  .totalhero .hlbl{font-size:12px;color:#bff3e4;text-transform:uppercase;letter-spacing:.5px}
+  .totalhero .hlbl{font-size:12px;color:#bcdcf3;text-transform:uppercase;letter-spacing:.5px}
   .totalhero .hval{font-size:28px;font-weight:800}
-  .totalhero .hval small{font-size:14px;color:#bff3e4;font-weight:600}
+  .totalhero .hval small{font-size:14px;color:#bcdcf3;font-weight:600}
   .alert{display:flex;gap:10px;align-items:flex-start;margin-top:10px;border-radius:11px;padding:12px 13px;
     font-size:12.7px;font-weight:600;line-height:1.4;border:1px solid;border-left-width:5px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
   .alert .ico{font-size:18px;line-height:1.15;flex:0 0 auto}
@@ -110,7 +111,9 @@
     body>*:not(#memorial){display:none!important}
     #memorial{display:block!important;color:#000;font-size:12px;padding:0 6mm}
     #memorial h1{font-size:18px;margin:0 0 2px} #memorial h2{font-size:14px;margin:16px 0 6px;border-bottom:1px solid #ccc;padding-bottom:3px}
-    #memorial .mbrand{font-size:20px;font-weight:800;letter-spacing:2px;color:#1b6b52}
+    #memorial .mbrand{font-size:22px;font-weight:800;letter-spacing:-.5px;color:#5a616a}
+    #memorial .mbrand b{color:#2b8ac9}
+    #memorial .mtag{font-size:9.5px;letter-spacing:2px;color:#777;margin:-2px 0 2px}
     #memorial table{width:100%;border-collapse:collapse;margin-top:6px}
     #memorial th,#memorial td{border:1px solid #bbb;padding:5px 7px;text-align:right;font-size:11px}
     #memorial th:first-child,#memorial td:first-child{text-align:left}
@@ -121,7 +124,22 @@
 </head>
 <body>
 <header>
-  <div class="brand">EXAUSTECH</div>
+  <svg class="logo" viewBox="0 0 620 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ExausTech">
+    <defs><path id="bl" d="M 60.0,8.0 L 62.7,8.6 L 65.3,9.3 L 67.8,10.2 L 70.1,11.3 L 72.4,12.4 L 74.5,13.8 L 76.4,15.2 L 78.3,16.7 L 80.0,18.4 L 81.6,20.2 L 83.0,22.0 L 84.2,24.0 L 85.4,26.0 L 86.3,28.2 L 87.1,30.3 L 87.7,32.6 L 88.1,34.9 L 88.4,37.2 L 88.5,39.6 L 88.4,42.1 L 88.1,44.5 L 87.6,47.0 L 86.9,49.5 L 86.0,52.0 L 85.2,53.4 L 84.3,54.8 L 83.3,56.0 L 82.2,57.2 L 81.1,58.2 L 79.9,59.1 L 78.6,59.9 L 77.3,60.7 L 75.9,61.3 L 74.4,61.8 L 73.0,62.2 L 71.5,62.5 L 70.0,62.7 L 68.5,62.8 L 66.9,62.8 L 65.4,62.7 L 63.9,62.4 L 62.4,62.1 L 60.9,61.7 L 59.4,61.2 L 58.0,60.5 L 56.6,59.8 L 55.3,58.9 L 54.0,58.0 L 52.6,56.7 L 51.3,55.1 L 50.2,53.5 L 49.3,51.7 L 48.5,49.7 L 47.9,47.7 L 47.4,45.5 L 47.1,43.3 L 46.9,40.9 L 46.9,38.6 L 47.0,36.2 L 47.2,33.8 L 47.6,31.3 L 48.1,28.9 L 48.8,26.5 L 49.6,24.1 L 50.5,21.7 L 51.5,19.5 L 52.6,17.3 L 53.9,15.2 L 55.2,13.2 L 56.7,11.3 L 58.3,9.6 L 60.0,8.0 Z"/></defs>
+    <g transform="translate(4,6)">
+      <circle cx="60" cy="60" r="53" fill="none" stroke="#2b8ac9" stroke-width="3"/>
+      <use href="#bl" transform="rotate(0 60 60)"   fill="#2b8ac9"/>
+      <use href="#bl" transform="rotate(60 60 60)"  fill="#1c69a3"/>
+      <use href="#bl" transform="rotate(120 60 60)" fill="#2b8ac9"/>
+      <use href="#bl" transform="rotate(180 60 60)" fill="#1c69a3"/>
+      <use href="#bl" transform="rotate(240 60 60)" fill="#2b8ac9"/>
+      <use href="#bl" transform="rotate(300 60 60)" fill="#1c69a3"/>
+      <circle cx="60" cy="60" r="11" fill="#eaf1fb"/>
+      <circle cx="60" cy="60" r="5.5" fill="#2b8ac9"/>
+    </g>
+    <text x="140" y="78" style="font:800 60px -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;letter-spacing:-1.5px"><tspan fill="#e8eef5">exaus</tspan><tspan fill="#2b8ac9">tech</tspan></text>
+    <text x="143" y="106" style="font:600 14.5px -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;letter-spacing:2.4px" fill="#9db4d0">AR CONDICIONADO · EXAUSTÃO · VENTILAÇÃO</text>
+  </svg>
   <h1>Calculadora de Vazão para Coifas</h1>
   <p>NBR 14518 &nbsp;·&nbsp; Decreto 22281 — GEM/RioLuz</p>
   <button id="installBtn">📲 Instalar app</button>
@@ -502,7 +520,8 @@ function buildMemorial(){
   const diam=area>0?Math.sqrt(4*area/Math.PI)*1000:0;
   const d=new Date().toLocaleDateString('pt-BR');
   document.getElementById('memorial').innerHTML=`
-    <div class="mbrand">EXAUSTECH</div>
+    <div class="mbrand">exaus<b>tech</b></div>
+    <div class="mtag">AR CONDICIONADO · EXAUSTÃO · VENTILAÇÃO · 20 ANOS</div>
     <h1>Memorial de Cálculo — Vazão de Exaustão de Coifas</h1>
     <div class="muted">Normas: ABNT NBR 14518 e Decreto Municipal 22281/2002 (GEM/RioLuz) · Emitido em ${d}</div>
     ${proj.nome?`<p><b>Obra/cliente:</b> ${proj.nome}</p>`:''}
