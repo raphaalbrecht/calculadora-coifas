@@ -309,6 +309,8 @@ function calcHood(h){
 // ================= Helpers =================
 function fmt(v){return v==null?'—':Math.round(v).toLocaleString('pt-BR');}
 function fmtV(v){return v.toString().replace('.',',');}
+function escT(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function escA(s){return escT(s).replace(/"/g,'&quot;');}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200);}
 
@@ -320,9 +322,11 @@ function segHtml(group,id,current,opts){
 function hoodHtml(h){
   const n=proj.hoods.indexOf(h)+1;
   return `<div class="hood" data-id="${h.id}">
-    <div class="htop"><span class="htitle">COIFA ${n}</span>
+    <div class="htop"><span class="htitle" id="htitle-${h.id}">COIFA ${n}${h.desc?' — '+escT(h.desc):''}</span>
       <button class="rm" data-act="rm" data-id="${h.id}">Remover</button></div>
-    <label>Tipo de coifa</label>
+    <label>Descrição / local (opcional)</label>
+    <input type="text" value="${escA(h.desc)}" data-f="desc" data-id="${h.id}" placeholder="Ex.: linha quente, fritadeiras">
+    <label style="margin-top:10px">Tipo de coifa</label>
     <select data-f="tipo" data-id="${h.id}">${Object.entries(TIPOS).map(([k,v])=>`<option value="${k}" ${k===h.tipo?'selected':''}>${v}</option>`).join('')}</select>
     <div data-lados="${h.id}" style="display:${h.tipo==='parede'?'block':'none'}">
       <label>Lados fechados</label>
@@ -379,7 +383,7 @@ function renderHoods(){
   });
 }
 function addHood(data){
-  proj.hoods.push(Object.assign({id:++hoodSeq,tipo:'ilha',lados:1,C:2.0,Larg:1.10,H:0.60,classe:'moderado',cert:false},data||{}));
+  proj.hoods.push(Object.assign({id:++hoodSeq,desc:'',tipo:'ilha',lados:1,C:2.0,Larg:1.10,H:0.60,classe:'moderado',cert:false},data||{}));
 }
 
 // ================= Update =================
@@ -387,6 +391,8 @@ function updateAll(){
   let total=0;
   proj.hoods.forEach(h=>{
     const r=calcHood(h);
+    const tt=document.getElementById('htitle-'+h.id);
+    if(tt)tt.textContent='COIFA '+(proj.hoods.indexOf(h)+1)+(h.desc?' — '+h.desc:'');
     const el=document.getElementById('hres-'+h.id);
     if(el)el.innerHTML = r.projeto!=null?`${fmt(r.projeto)} <small>m³/h</small>`:'Não aplicável';
     const det=document.getElementById('hdet-'+h.id);
@@ -484,7 +490,7 @@ function textSummary(){
   if(proj.nome)t+=`Obra: ${proj.nome}\n`;
   let total=0;
   proj.hoods.forEach((h,i)=>{const r=calcHood(h);if(r.projeto!=null)total+=r.projeto;
-    t+=`Coifa ${i+1} (${TIPOS[h.tipo]}, ${h.C}×${h.Larg} m): ${fmt(r.projeto)} m³/h\n`;});
+    t+=`Coifa ${i+1}${h.desc?' - '+h.desc:''} (${TIPOS[h.tipo]}, ${h.C}×${h.Larg} m): ${fmt(r.projeto)} m³/h\n`;});
   t+=`VAZÃO TOTAL: ${fmt(total)} m³/h\n`;
   t+=`Ar de reposição (~90%): ${fmt(total*0.9)} m³/h`;
   return t;
@@ -500,7 +506,7 @@ async function share(){
 function buildMemorial(){
   let total=0;const rows=proj.hoods.map((h,i)=>{
     const r=calcHood(h);if(r.projeto!=null)total+=r.projeto;
-    return `<tr><td>${i+1}</td><td>${TIPOS[h.tipo]}</td><td>${h.C}×${h.Larg}×${h.H}</td><td>${CLASSES[h.classe]}</td>
+    return `<tr><td>${i+1}</td><td>${TIPOS[h.tipo]}${h.desc?'<br><span class="muted">'+escT(h.desc)+'</span>':''}</td><td>${h.C}×${h.Larg}×${h.H}</td><td>${CLASSES[h.classe]}</td>
       <td>${fmt(r.mI.q)}</td><td>${fmt(r.mII.q)}</td><td>${fmt(r.dec.q)}</td><td class="tot">${fmt(r.projeto)}</td></tr>`;
   }).join('');
   const vol=(+proj.area||0)*(+proj.pe||0), req=vol*proj.ren;
