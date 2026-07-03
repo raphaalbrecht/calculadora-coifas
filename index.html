@@ -66,7 +66,8 @@
   .hres .hlbl{font-size:11px;color:#bcdcf3;text-transform:uppercase;letter-spacing:.5px}
   .hres .hval{font-size:22px;font-weight:800}
   .hres .hval small{font-size:12px;font-weight:600;color:#bcdcf3}
-  .hres .horigem{font-size:10px;font-weight:700;letter-spacing:1.3px;color:#bcdcf3;opacity:.8;margin-top:3px;text-transform:uppercase;text-align:right}
+  .hres .hrow{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .hres .horigem{font-size:10px;font-weight:700;letter-spacing:1.3px;color:#bcdcf3;opacity:.8;text-transform:uppercase;text-align:right;white-space:nowrap}
   details.methods{margin-top:9px}
   details.methods summary{font-size:12px;color:var(--accent);cursor:pointer;padding:3px 0}
   .mrow{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid rgba(38,67,107,.5)}
@@ -355,7 +356,7 @@ function hoodHtml(h){
     <label style="margin-top:10px">Certificada?</label>
     ${segHtml('cert',h.id,h.cert?'sim':'nao',{nao:'Não',sim:'Sim'})}
     <div class="hres">
-      <div class="hlbl">Vazão de projeto</div>
+      <div class="hrow"><div class="hlbl">Vazão de projeto</div><div class="horigem" id="horigem-${h.id}"></div></div>
       <div class="hval" id="hres-${h.id}">— <small>m³/h</small></div>
     </div>
     <details class="methods"><summary>Ver métodos</summary><div id="hdet-${h.id}"></div></details>
@@ -406,9 +407,9 @@ function updateAll(){
     const tt=document.getElementById('htitle-'+h.id);
     if(tt)tt.textContent='COIFA '+(proj.hoods.indexOf(h)+1)+(h.desc?' — '+h.desc:'');
     const el=document.getElementById('hres-'+h.id);
-    if(el)el.innerHTML = r.projeto!=null
-      ? `${fmt(r.projeto)} <small>m³/h</small><div class="horigem">${r.origem}</div>`
-      : 'Não aplicável';
+    if(el)el.innerHTML = r.projeto!=null?`${fmt(r.projeto)} <small>m³/h</small>`:'Não aplicável';
+    const og=document.getElementById('horigem-'+h.id);
+    if(og)og.textContent = r.projeto!=null?r.origem:'';
     const det=document.getElementById('hdet-'+h.id);
     if(det)det.innerHTML=
       mrow('NBR Método I',r.mI.q,r.mI.det)+
