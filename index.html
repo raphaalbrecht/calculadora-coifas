@@ -66,6 +66,7 @@
   .hres .hlbl{font-size:11px;color:#bcdcf3;text-transform:uppercase;letter-spacing:.5px}
   .hres .hval{font-size:22px;font-weight:800}
   .hres .hval small{font-size:12px;font-weight:600;color:#bcdcf3}
+  .hres .horigem{font-size:10px;font-weight:700;letter-spacing:1.3px;color:#bcdcf3;opacity:.8;margin-top:3px;text-transform:uppercase}
   details.methods{margin-top:9px}
   details.methods summary{font-size:12px;color:var(--accent);cursor:pointer;padding:3px 0}
   .mrow{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid rgba(38,67,107,.5)}
@@ -303,7 +304,18 @@ function calcHood(h){
   const cands=[mI.q,mII.q,dec.q].filter(x=>x!=null&&isFinite(x));
   const base=cands.length?Math.max(...cands):null;
   const projeto=base!=null?base*(1+(+proj.fs||0)/100):null;
-  return {mI,mII,dec,base,projeto};
+  let origem='—', origemCurta='—';
+  if(base!=null){
+    const opts=[
+      {q:mI.q,  full:'NBR 14518 · MÉTODO I',  curta:'NBR I'},
+      {q:mII.q, full:'NBR 14518 · MÉTODO II', curta:'NBR II'},
+      {q:dec.q, full:'DECRETO 22281 · GEM',   curta:'GEM'}
+    ].filter(o=>o.q!=null&&isFinite(o.q));
+    let win=opts[0];
+    for(const o of opts) if(o.q>win.q) win=o;
+    origem=win.full; origemCurta=win.curta;
+  }
+  return {mI,mII,dec,base,projeto,origem,origemCurta};
 }
 
 // ================= Helpers =================
@@ -394,7 +406,9 @@ function updateAll(){
     const tt=document.getElementById('htitle-'+h.id);
     if(tt)tt.textContent='COIFA '+(proj.hoods.indexOf(h)+1)+(h.desc?' — '+h.desc:'');
     const el=document.getElementById('hres-'+h.id);
-    if(el)el.innerHTML = r.projeto!=null?`${fmt(r.projeto)} <small>m³/h</small>`:'Não aplicável';
+    if(el)el.innerHTML = r.projeto!=null
+      ? `${fmt(r.projeto)} <small>m³/h</small><div class="horigem">${r.origem}</div>`
+      : 'Não aplicável';
     const det=document.getElementById('hdet-'+h.id);
     if(det)det.innerHTML=
       mrow('NBR Método I',r.mI.q,r.mI.det)+
@@ -507,7 +521,7 @@ function buildMemorial(){
   let total=0;const rows=proj.hoods.map((h,i)=>{
     const r=calcHood(h);if(r.projeto!=null)total+=r.projeto;
     return `<tr><td>${i+1}</td><td>${TIPOS[h.tipo]}${h.desc?'<br><span class="muted">'+escT(h.desc)+'</span>':''}</td><td>${h.C}×${h.Larg}×${h.H}</td><td>${CLASSES[h.classe]}</td>
-      <td>${fmt(r.mI.q)}</td><td>${fmt(r.mII.q)}</td><td>${fmt(r.dec.q)}</td><td class="tot">${fmt(r.projeto)}</td></tr>`;
+      <td>${fmt(r.mI.q)}</td><td>${fmt(r.mII.q)}</td><td>${fmt(r.dec.q)}</td><td class="tot">${fmt(r.projeto)}<br><span class="muted" style="font-weight:400">${r.origemCurta}</span></td></tr>`;
   }).join('');
   const vol=(+proj.area||0)*(+proj.pe||0), req=vol*proj.ren;
   const area=total>0&&proj.vDuto>0?(total/3600/proj.vDuto):0;
